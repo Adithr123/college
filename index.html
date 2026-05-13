@@ -2,215 +2,167 @@
 <html lang="en">
 
 <head>
-  <title>Unit 8 Review Guide - Morrill 2024</title>
-  <link rel="icon" href="https://3.files.edl.io/7922/19/08/10/194757-a6f2c91a-638c-4d35-ab87-5de5e65c874a.jpg">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" /> <!--cdncss link-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Subscription Cost Explorer</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="bg-black" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%"
-  data-bs-smooth-scroll="true" tabindex="0">
+<body>
+	<div class="container mt-3">
+		<ul class="nav nav-tabs" id="mainTabs" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="main-tab" data-bs-toggle="tab" data-bs-target="#main" type="button"
+					role="tab" aria-controls="main" aria-selected="true">Main</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="hidden-tab" data-bs-toggle="tab" data-bs-target="#hidden" type="button"
+					role="tab" aria-controls="hidden" aria-selected="false">Hidden costs</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="resources-tab" data-bs-toggle="tab" data-bs-target="#resources" type="button"
+					role="tab" aria-controls="resources" aria-selected="false">Resources</button>
+			</li>
+		</ul>
+		<div class="tab-content pt-4" id="mainTabsContent">
+			<div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby="main-tab">
+				<div class="main-popup-layer" id="mainPopupLayer" aria-hidden="true"></div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="glass-card p-4">
+							<h3>Mission statement</h3>
+							<p>Understanding the true cost of recurring subscriptions is essential for high school seniors preparing for college and beyond. Small monthly charges accumulate quickly, hidden fees compound the burden, and annual price increases multiply the impact over time. This tool visualizes how subscriptions really drain your wallet—not through their sticker price, but through the relentless repetition and hidden costs that sneak into your account. Make informed decisions about which subscriptions are worth it.</p>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="glass-card calculator-card p-4">
+							<h3>Cost visualizer</h3>
+							<div class="mb-3">
+								<label class="form-label">Monthly subscription price</label>
+								<div class="input-group">
+									<span class="input-group-text">$</span>
+									<input id="subscriptionPrice" class="form-control" type="number" min="0" step="0.01" value="12.99">
+								</div>
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Hidden monthly fees</label>
+								<div class="input-group">
+									<span class="input-group-text">$</span>
+									<input id="hiddenFees" class="form-control" type="number" min="0" step="0.01" value="4.00">
+								</div>
+							</div>
+							<div class="mb-3 row">
+								<div class="col-6">
+									<label class="form-label">Annual increase (%)</label>
+									<input id="inflationRate" class="form-control" type="number" min="0" step="0.1" value="6">
+								</div>
+								<div class="col-6">
+									<label class="form-label">Duration (years)</label>
+									<input id="durationYears" class="form-control" type="number" min="1" step="1" value="4">
+								</div>
+							</div>
+							<div class="highlight-box p-3">
+								<div class="d-flex justify-content-between">
+									<span>Monthly total</span>
+									<strong id="monthlyTotal">$0</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>First year total</span>
+									<strong id="yearOneTotal">$0</strong>
+								</div>
+								<div class="d-flex justify-content-between">
+									<span>All years combined</span>
+									<strong id="lifetimeTotal">$0</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
+				<div class="row mt-4">
+					<div class="col-12">
+						<div class="glass-card p-3 main-visualizer-shell">
+							<div class="cost-popup-layer" id="costPopupLayer" aria-hidden="true"></div>
+							<h4>Per-year visualizer</h4>
+							<div class="swiper cost-swiper mt-3">
+								<div class="swiper-wrapper" id="yearSlides"></div>
+								<div class="swiper-pagination cost-swiper-pagination"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-  <section id="home" >
-    <div class="container">
-      <div class="row g-3 flex-row-reverse align-items-center">
-        <div class="col-md-6">
-          <img src="images/header.jpg" class="img-fluid rounded-4" alt="banner">
-        </div>
-        <div class="col-md-6 text-center">
-          <h1 class="display-1 fw-bold">
-            Unit 8 Review - Morrill
-          </h1>
-          <p>Last updated on 07/06/24</p>
-          <p>By: Adith R, Aneesha J, Ava F, and Sarah A.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+			<div class="tab-pane fade" id="hidden" role="tabpanel" aria-labelledby="hidden-tab">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="glass-card p-4">
+							<h3>Hidden fees</h3>
+							<p class="hidden-caption">Click each header to reveal common hidden fees (editable).</p>
+							<div class="fee-expanders mt-3">
+								<div class="fee-expander">
+									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeActivation"
+									  aria-expanded="false" aria-controls="feeActivation">Activation fees</button>
+									<div class="collapse fee-expander-body" id="feeActivation">
+										<p>One-time charges to start the service, rent equipment, or unlock premium access.</p>
+									</div>
+								</div>
+								<div class="fee-expander">
+									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeTax"
+									  aria-expanded="false" aria-controls="feeTax">Tax and service charges</button>
+									<div class="collapse fee-expander-body" id="feeTax">
+										<p>Monthly tax, processing, and service fees that quietly raise the advertised price.</p>
+									</div>
+								</div>
+								<div class="fee-expander">
+									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeStorage"
+									  aria-expanded="false" aria-controls="feeStorage">Add-on storage</button>
+									<div class="collapse fee-expander-body" id="feeStorage">
+										<p>Extra charges for cloud storage, add-ons, or features that are not included in the base plan.</p>
+									</div>
+								</div>
+								<div class="fee-expander">
+									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeRenewal"
+									  aria-expanded="false" aria-controls="feeRenewal">Auto-renewal price jumps</button>
+									<div class="collapse fee-expander-body" id="feeRenewal">
+										<p>Rates often rise after the first term, and many people do not notice until the next bill arrives.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="glass-card p-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;">
+							<h4 class="mb-3">Your money dissapearing</h4>
+							<div class="money-pile" id="moneyPile"></div>
+							<p class="mt-3 text-center" style="color: white;">Watch as subscriptions drain your account over time.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-  <section id="Reiview Slides" class="bg-secondary py-5">
-    <div class="container text-center">
-      <div class="row g-4 justify-content-center text-white">
-        <div class="col-md-4">
-          <div class="icon">
-            
-              <img src="images/reviewslides.jpg" class="img-fluid rounded-4" alt="banner">
-            </svg>
-          </div>
-          <h4 class="mt-2">
-            Review Slides
-          </h4>
-          <p>
-            Use to quickly review the unit. SHOULD NOT BE ONLY STUDY SOURCE. 
-            <a href="https://docs.google.com/presentation/d/18piK8uCZNv1f4In30O8e8EQYmXIdAkkI3ziUv6undjY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Review Game</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <div class="icon">
+			<div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
+				<div class="glass-card p-4">
+					<h3>Resources</h3>
+					<p>Links and sources placeholders:</p>
+					<div class="resource-links">
+						<a href="#" aria-label="Resource link placeholder 1">&nbsp;</a>
+						<a href="#" aria-label="Resource link placeholder 2">&nbsp;</a>
+						<a href="#" aria-label="Resource link placeholder 3">&nbsp;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-            <img src="images/guide.png" class="img-fluid rounded-4" alt="banner">
-            <p>Study Guide</p>
-            <img src="images/answers.png" class="img-fluid rounded-4" alt="banner">
-            <p>Answer Key</p>
-            </svg>
-          </div>
-          <h4 class="mt-2">
-            Study Guide
-          </h4>
-          <p>
-            Use this to review what you have learned and to get the key points from the slides!
-            <a href="https://docs.google.com/document/d/16r-O__kh_qum_wb1zrAbgMHL0cuN_RiT4hyiTaD5kw0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Study Guide</a>
-            <a href="https://docs.google.com/document/d/12ndah9zusDiyyiGT22MqgbhkIhJP7kIWAuhEBXU8tSQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Answer Key</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <div class="icon">
-            <svg class="text-primary adhesive-plaster-broken" width="81" height="81">
-            <img src="images/vocab.jpg" class="img-fluid rounded-4" alt="banner">
-            </svg>
-          </div>
-          <h4 class="mt-2">
-            Vocabulary List and Activity 
-          </h4>
-          <p>
-            Want to sound like you know stuff? Use this to really get to know the fancy shmancy speak of Collegeboard.
-            <a href="https://quizlet.com/notes/ap-world-unit-8-vocab-0181e8e9-9d7b-47d9-8b11-3e0e7bee1a61" target="_blank" rel="noopener noreferrer">Vocab List and Activity</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="recommended" >
-    <div class="container">
-        <div class="row mt-5">
-          <div class="col-md-3 mt-3">
-            <img src="images/check.png" class="img-fluid rounded-4">
-            <div class="py-3">
-              <h4 class="mb-0">Vocabulary Check for understanding</h4>
-              <p>Want to make sure you understood the lingo of this unit? Use this!
-                <a href="https://quizizz.com/join/quiz/6650f5212bf43d888f794e97/start?studentShare=true" target="_blank" rel="noopener noreferrer">Vocab Check</a>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3 mt-3">
-            <img src="images/onepage.png" class="img-fluid rounded-4">
-            <div class="py-3">
-              <h4 class="mb-0">Printable One-Pager</h4>
-              <p>Running out of printer ink? Use this one pager as a alternative to the review slides and study guide.
-                <a href="https://docs.google.com/document/d/1J8NxhIQ_r4bYmrIUcR8A8svEqdG84pn_EnrTWWyCYYQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">One-Pager</a>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3 mt-3">
-            <img src="images/top5.png" class="img-fluid rounded-4">
-            <div class="py-3">
-              <h4 class="mb-0">Annotated Top 5 review video list</h4>
-              <p>On a time crunch? GOtta go fast? Use this list to quickly refresh your memory before a quiz or test.
-                <a href="https://docs.google.com/document/d/1ym9tNmZPDcVfc5Es5Fszq_1l8LD1XAvZsMM1_PUCh7U/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Top 5</a>
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3 mt-3">
-            <img src="images/unitreview.jpg" class="img-fluid rounded-4">
-            <div class="py-3">
-              <h4 class="mb-0">Whole Unit Review Game</h4>
-              <p>26 questions. Use this to check that you understood what came out of the review slides and unit.
-                <a href="https://create.kahoot.it/details/bd747e47-465e-4177-a5a2-9c647843591a" target="_blank" rel="noopener noreferrer">Unit Review</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="Reiview Slides" class="bg-secondary py-5">
-    <div class="container text-center">
-      <div class="row g-4 justify-content-center text-white">
-        <div class="col-md-4">
-          <div class="icon">
-            
-              <img src="images/mcq.jpg" class="img-fluid rounded-4" alt="banner">
-            </svg>
-          </div>
-          <h4 class="mt-2">
-            AP MCQ style Quiz
-          </h4>
-          <p>
-            Crunch prepping for a test? Dont know how you're going to ace the MCQ? Use this to quickly review!
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVkATAGzC_bsadMxkd6338XHuPx6-nv79tNCnrKuOVa7NlbQ/viewform" target="_blank" rel="noopener noreferrer">AP MCQ Quiz</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <div class="icon">
-            
-            <img src="images/prompt.png" class="img-fluid rounded-4" alt="banner">
-            <p>Prompt + Guideline</p>
-            <img src="images/responce.png" class="img-fluid rounded-4" alt="banner">
-            <p>Sample response</p>
-            </svg>
-          </div>
-          <h4 class="mt-2">
-            Writing Skill Activity/Assesment
-          </h4>
-          <p>
-            Dont know how to ace that LEQ, DBQ, or SAQ? Use this to quickly refresh your memory and practice!
-            <a href="https://docs.google.com/document/d/1wy-bsM_JJR_qqMYS-wo1-GfPnvH2KbPLg49k6fBxfh0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Writing Skill Activity</a>
-            <p></p>
-            <a href="https://docs.google.com/document/d/1ULyRQR00p8yBIASgF2GReSLwTR7zYFdSI0kmwcZH6dU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Sample response</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- Video Popup -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-
-      <div class="modal-content">
-
-        <div class="modal-body">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><svg class="bi" width="40"
-              height="40">
-              <use xlink:href="#close-sharp"></use>
-            </svg></button>
-          <div class="ratio ratio-16x9">
-            <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
-              allow="autoplay"></iframe>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <script src="js/jquery-1.11.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
