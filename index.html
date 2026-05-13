@@ -13,6 +13,9 @@
 </head>
 
 <body>
+	<div class="page-background-art" aria-hidden="true">
+		<img src="images/background.svg" alt="" />
+	</div>
 	<div class="container mt-3">
 		<ul class="nav nav-tabs" id="mainTabs" role="tablist">
 			<li class="nav-item" role="presentation">
@@ -41,6 +44,9 @@
 					<div class="col-lg-6">
 						<div class="glass-card calculator-card p-4">
 							<h3>Cost visualizer</h3>
+							<div class="section-art section-art--cost mb-3">
+								<img src="images/cost-visual.svg" alt="Cost visualizer illustration">
+							</div>
 							<div class="mb-3">
 								<label class="form-label">Monthly subscription price</label>
 								<div class="input-group">
@@ -88,6 +94,9 @@
 						<div class="glass-card p-3 main-visualizer-shell">
 							<div class="cost-popup-layer" id="costPopupLayer" aria-hidden="true"></div>
 							<h4>Per-year visualizer</h4>
+							<div class="section-art section-art--year mt-3 mb-3">
+								<img src="images/year-visual.svg" alt="Year by year illustration">
+							</div>
 							<div class="swiper cost-swiper mt-3">
 								<div class="swiper-wrapper" id="yearSlides"></div>
 								<div class="swiper-pagination cost-swiper-pagination"></div>
@@ -159,15 +168,20 @@
 			<div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
 				<div class="glass-card p-4">
 					<h3>Resources</h3>
-					<p>Links to the remaining visual assets in the <code>images/</code> folder:</p>
-					<div class="resource-links">
-						<a href="images/prompt.svg" target="_blank" rel="noopener">prompt.svg</a>
-						<a href="images/mcq.svg" target="_blank" rel="noopener">mcq.svg</a>
-						<a href="images/answers.svg" target="_blank" rel="noopener">answers.svg</a>
-						<a href="images/guide.svg" target="_blank" rel="noopener">guide.svg</a>
-						<a href="images/check.svg" target="_blank" rel="noopener">check.svg</a>
-						<a href="images/responce.svg" target="_blank" rel="noopener">responce.svg</a>
-						<a href="images/favicon.svg" target="_blank" rel="noopener">favicon.svg</a>
+					<p>Open the local artwork files directly from the <code>images/</code> folder:</p>
+					<div class="row g-3 asset-gallery">
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/background.svg" target="_blank" rel="noopener"><img src="images/background.svg" alt="Background art"><span>background.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/cost-visual.svg" target="_blank" rel="noopener"><img src="images/cost-visual.svg" alt="Cost visual illustration"><span>cost-visual.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/year-visual.svg" target="_blank" rel="noopener"><img src="images/year-visual.svg" alt="Year visual illustration"><span>year-visual.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/money-pile.svg" target="_blank" rel="noopener"><img src="images/money-pile.svg" alt="Money pile illustration"><span>money-pile.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/prompt.svg" target="_blank" rel="noopener"><img src="images/prompt.svg" alt="Prompt illustration"><span>prompt.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/mcq.svg" target="_blank" rel="noopener"><img src="images/mcq.svg" alt="Multiple choice illustration"><span>mcq.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/answers.svg" target="_blank" rel="noopener"><img src="images/answers.svg" alt="Answers illustration"><span>answers.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/guide.svg" target="_blank" rel="noopener"><img src="images/guide.svg" alt="Guide illustration"><span>guide.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/check.svg" target="_blank" rel="noopener"><img src="images/check.svg" alt="Check illustration"><span>check.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/responce.svg" target="_blank" rel="noopener"><img src="images/responce.svg" alt="Response illustration"><span>responce.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/favicon.svg" target="_blank" rel="noopener"><img src="images/favicon.svg" alt="Favicon illustration"><span>favicon.svg</span></a></div>
+						<div class="col-6 col-md-3"><a class="asset-gallery-item" href="images/header.svg" target="_blank" rel="noopener"><img src="images/header.svg" alt="Header illustration"><span>header.svg</span></a></div>
 					</div>
 				</div>
 			</div>

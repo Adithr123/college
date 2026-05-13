@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Subscription Background</title>
+  <desc id="desc">An abstract dark background with floating cards and cost accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1117"/>
+      <stop offset="100%" stop-color="#101722"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7bd389" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7bd389" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="220" cy="180" r="180" fill="url(#glow)"/>
+  <circle cx="1360" cy="140" r="220" fill="#5883ff" opacity="0.10"/>
+  <circle cx="1260" cy="740" r="260" fill="#7bd389" opacity="0.08"/>
+  <g opacity="0.95">
+    <rect x="170" y="220" width="320" height="180" rx="28" fill="#121a24" stroke="#314054" stroke-width="2"/>
+    <rect x="220" y="262" width="210" height="28" rx="14" fill="#7bd389"/>
+    <rect x="220" y="312" width="160" height="16" rx="8" fill="#d7e0ea" opacity="0.55"/>
+    <rect x="220" y="340" width="120" height="16" rx="8" fill="#d7e0ea" opacity="0.3"/>
+    <rect x="1120" y="220" width="300" height="180" rx="28" fill="#121a24" stroke="#314054" stroke-width="2"/>
+    <rect x="1170" y="262" width="170" height="28" rx="14" fill="#34b1c3"/>
+    <rect x="1170" y="312" width="140" height="16" rx="8" fill="#d7e0ea" opacity="0.55"/>
+    <rect x="1170" y="340" width="110" height="16" rx="8" fill="#d7e0ea" opacity="0.3"/>
+  </g>
+  <g opacity="0.8">
+    <path d="M530 560c120-70 250-104 400-104s280 34 400 104" fill="none" stroke="#7bd389" stroke-width="10" stroke-linecap="round"/>
+    <path d="M620 620c70-34 150-50 240-50s170 16 240 50" fill="none" stroke="#34b1c3" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
