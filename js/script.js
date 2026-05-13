@@ -158,7 +158,7 @@
       }
 
       spawnCostPopup();
-      window.setInterval(spawnCostPopup, 2200);
+      window.setInterval(spawnCostPopup, 8000);
 
       // Money pile disappearing animation on hidden costs tab
       function initMoneyPile() {
