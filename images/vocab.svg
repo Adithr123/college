@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Vocabulary Graphic</title>
+  <desc id="desc">Flashcards and a magnifying glass showing budget and subscription vocabulary.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1117"/>
+      <stop offset="100%" stop-color="#121a24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="200" y="180" width="260" height="360" rx="28" fill="#18202a" stroke="#314054" stroke-width="2" transform="rotate(-10 200 180)"/>
+  <rect x="470" y="150" width="260" height="400" rx="28" fill="#121a24" stroke="#314054" stroke-width="2"/>
+  <rect x="740" y="180" width="260" height="360" rx="28" fill="#18202a" stroke="#314054" stroke-width="2" transform="rotate(10 740 180)"/>
+  <circle cx="600" cy="410" r="84" fill="#7bd389" opacity="0.18"/>
+  <circle cx="600" cy="410" r="52" fill="none" stroke="#7bd389" stroke-width="12"/>
+  <line x1="650" y1="460" x2="720" y2="530" stroke="#7bd389" stroke-width="12" stroke-linecap="round"/>
+  <text x="600" y="205" text-anchor="middle" fill="#7bd389" font-family="Syne, Arial, sans-serif" font-size="34" font-weight="700">TERM</text>
+  <text x="600" y="256" text-anchor="middle" fill="#f7f7f2" font-family="Montserrat, Arial, sans-serif" font-size="26">Subscription</text>
+  <text x="600" y="302" text-anchor="middle" fill="#d7e0ea" font-family="Montserrat, Arial, sans-serif" font-size="20">A recurring cost</text>
+  <text x="600" y="360" text-anchor="middle" fill="#34b1c3" font-family="Montserrat, Arial, sans-serif" font-size="26">Hidden fee</text>
+  <text x="600" y="406" text-anchor="middle" fill="#d7e0ea" font-family="Montserrat, Arial, sans-serif" font-size="20">An extra charge</text>
+  <text x="600" y="462" text-anchor="middle" fill="#ffc15d" font-family="Montserrat, Arial, sans-serif" font-size="26">Auto-renewal</text>
+  <text x="600" y="508" text-anchor="middle" fill="#d7e0ea" font-family="Montserrat, Arial, sans-serif" font-size="20">It keeps going</text>
+</svg>

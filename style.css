@@ -625,6 +625,7 @@ p {
 
 .resource-links {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 0.85rem;
 }
 
@@ -633,6 +634,57 @@ p {
     border-radius: 1rem;
     border: 1px dashed rgba(123, 211, 137, 0.35);
     background: rgba(123, 211, 137, 0.05);
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.resource-links a:hover {
+    border-color: rgba(123, 211, 137, 0.7);
+    background: rgba(123, 211, 137, 0.12);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.asset-gallery {
+    margin-top: 0.25rem;
+}
+
+.asset-gallery-item {
+    display: block;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(123, 211, 137, 0.14);
+    background: rgba(9, 14, 20, 0.72);
+    text-decoration: none;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.asset-gallery-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(123, 211, 137, 0.45);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.3);
+}
+
+.asset-gallery-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.asset-gallery-item span {
+    display: block;
+    padding: 0.75rem 0.9rem;
+    color: var(--white-color);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
 }
 
 #resources .glass-card {

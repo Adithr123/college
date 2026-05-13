@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Response Graphic</title>
+  <desc id="desc">A chat response bubble showing quick feedback about recurring payments.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1117"/>
+      <stop offset="100%" stop-color="#101722"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M220 170h760c44 0 80 36 80 80v210c0 44-36 80-80 80H550l-130 120v-120H220c-44 0-80-36-80-80V250c0-44 36-80 80-80Z" fill="#121a24" stroke="#314054" stroke-width="2"/>
+  <circle cx="330" cy="320" r="28" fill="#7bd389"/>
+  <circle cx="400" cy="320" r="28" fill="#34b1c3"/>
+  <circle cx="470" cy="320" r="28" fill="#ffc15d"/>
+  <rect x="300" y="410" width="470" height="24" rx="12" fill="#d7e0ea" opacity="0.75"/>
+  <rect x="300" y="452" width="360" height="24" rx="12" fill="#d7e0ea" opacity="0.45"/>
+  <text x="600" y="650" text-anchor="middle" fill="#f7f7f2" font-family="Syne, Arial, sans-serif" font-size="44" font-weight="700">Response received</text>
+</svg>

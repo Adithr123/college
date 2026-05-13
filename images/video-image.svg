@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Video Preview Graphic</title>
+  <desc id="desc">A dark video player screen with a large play button and subscription controls.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1117"/>
+      <stop offset="100%" stop-color="#101722"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="160" y="130" width="880" height="540" rx="34" fill="#0f1720" stroke="#263243" stroke-width="2"/>
+  <rect x="210" y="190" width="780" height="420" rx="24" fill="#121a24" stroke="#314054" stroke-width="2"/>
+  <circle cx="600" cy="400" r="82" fill="#7bd389" opacity="0.18"/>
+  <polygon points="580,355 580,445 655,400" fill="#7bd389"/>
+  <rect x="240" y="632" width="720" height="18" rx="9" fill="#314054"/>
+  <rect x="240" y="632" width="250" height="18" rx="9" fill="#7bd389"/>
+  <rect x="240" y="160" width="170" height="24" rx="12" fill="#34b1c3"/>
+  <text x="325" y="178" text-anchor="middle" fill="#0b1117" font-family="Montserrat, Arial, sans-serif" font-size="16" font-weight="700">WATCH TIME</text>
+  <text x="600" y="714" text-anchor="middle" fill="#f7f7f2" font-family="Syne, Arial, sans-serif" font-size="46" font-weight="700">Streaming costs never stop</text>
+</svg>
