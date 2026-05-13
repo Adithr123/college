@@ -631,8 +631,73 @@ p {
 .resource-links a {
     min-height: 56px;
     border-radius: 1rem;
-    border: 1px dashed rgba(123, 211, 137, 0.35);
+    border: 1px solid rgba(123, 211, 137, 0.18);
     background: rgba(123, 211, 137, 0.05);
+    color: var(--white-color);
+    text-decoration: none;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.resource-links a:hover {
+    transform: translateY(-2px);
+    border-color: rgba(123, 211, 137, 0.42);
+    background: rgba(123, 211, 137, 0.1);
+}
+
+.resource-links span,
+.visual-archive-card span {
+    font-family: var(--heading-font);
+    font-size: 1.05rem;
+    color: var(--white-color);
+}
+
+.resource-links small,
+.visual-archive-card small {
+    color: #9ba8b9;
+}
+
+.visual-archive-note {
+    max-width: 34rem;
+    color: #9ba8b9;
+    font-size: 0.95rem;
+}
+
+.visual-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.visual-archive-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.8rem;
+    border-radius: 1.1rem;
+    border: 1px solid rgba(123, 211, 137, 0.18);
+    background: rgba(123, 211, 137, 0.05);
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.visual-archive-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(123, 211, 137, 0.42);
+    background: rgba(123, 211, 137, 0.1);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.25);
+}
+
+.visual-archive-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 #resources .glass-card {
@@ -734,6 +799,10 @@ h3 button.accordion-button{
     .hero-stats {
         grid-template-columns: 1fr;
     }
+
+    .visual-archive-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -757,6 +826,10 @@ h3 button.accordion-button{
     .summary-bar .bar {
         max-width: 100%;
         width: 100%;
+    }
+
+    .visual-archive-grid {
+        grid-template-columns: 1fr;
     }
 }
 
