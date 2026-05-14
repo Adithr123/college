@@ -49,10 +49,12 @@
         },
         mousewheel: {
           enabled: true,
-          forceToAxis: true,
-          thresholdDelta: 30,
+          forceToAxis: false,
+          eventsTarget: ".cost-swiper",
+          invert: false,
+          thresholdDelta: 20,
           thresholdTime: 450,
-          sensitivity: 0.45,
+          sensitivity: 0.5,
           releaseOnEdges: true
         },
         longSwipesRatio: 0.2,
