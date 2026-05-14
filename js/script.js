@@ -3,9 +3,6 @@
     "use strict";
 
     $(document).ready(function() {
-      // Register Swiper modules
-      Swiper.use([Swiper.Mousewheel]);
-
       function formatCurrency(value) {
         return new Intl.NumberFormat("en-US", {
           style: "currency",
@@ -35,6 +32,8 @@
       }
 
       var costSwiper = new Swiper(".cost-swiper", {
+        slidesPerGroup: 1,
+        speed: 450,
         spaceBetween: 18,
         pagination: {
             el: ".cost-swiper-pagination",
@@ -48,7 +47,16 @@
             slidesPerView: 1.15,
           }
         },
-        mousewheel: true,
+        mousewheel: {
+          enabled: true,
+          forceToAxis: true,
+          thresholdDelta: 30,
+          thresholdTime: 450,
+          sensitivity: 0.45,
+          releaseOnEdges: true
+        },
+        longSwipesRatio: 0.2,
+        longSwipesMs: 350,
         grabCursor: true,
       });
 
