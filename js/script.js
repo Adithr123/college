@@ -3,6 +3,9 @@
     "use strict";
 
     $(document).ready(function() {
+      // Register Swiper modules
+      Swiper.use([Swiper.Mousewheel]);
+
       function formatCurrency(value) {
         return new Intl.NumberFormat("en-US", {
           style: "currency",
