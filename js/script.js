@@ -19,6 +19,21 @@
         return Number.isFinite(value) && value >= 0 ? value : fallback;
       }
 
+      var INPUT_LIMITS = {
+        basePriceMax: 1000,
+        hiddenFeesMax: 1000,
+        annualIncreaseMax: 200,
+        yearsMax: 20
+      };
+
+      function clampNumber(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function readClampedNumber(selector, fallback, min, max) {
+        return clampNumber(readNumber(selector, fallback), min, max);
+      }
+
       var costSwiper = new Swiper(".cost-swiper", {
         spaceBetween: 18,
         pagination: {
@@ -68,11 +83,17 @@
       }
 
       function updateSummary() {
-        var basePrice = readNumber("#subscriptionPrice", 0);
-        var hiddenFees = readNumber("#hiddenFees", 0);
-        var annualIncreasePercent = readNumber("#inflationRate", 0);
-        var years = Math.max(1, Math.round(readNumber("#durationYears", 1)));
+        var basePrice = readClampedNumber("#subscriptionPrice", 0, 0, INPUT_LIMITS.basePriceMax);
+        var hiddenFees = readClampedNumber("#hiddenFees", 0, 0, INPUT_LIMITS.hiddenFeesMax);
+        var annualIncreasePercent = readClampedNumber("#inflationRate", 0, 0, INPUT_LIMITS.annualIncreaseMax);
+        var years = Math.round(readClampedNumber("#durationYears", 1, 1, INPUT_LIMITS.yearsMax));
         var annualIncrease = annualIncreasePercent / 100;
+
+        // Keep inputs aligned with enforced limits in all environments.
+        $("#subscriptionPrice").val(basePrice.toFixed(2));
+        $("#hiddenFees").val(hiddenFees.toFixed(2));
+        $("#inflationRate").val(annualIncreasePercent);
+        $("#durationYears").val(years);
 
         var monthlyTotal = basePrice + hiddenFees;
         var yearOneTotal = monthlyTotal * 12;
