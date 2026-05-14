@@ -86,7 +86,7 @@
         var basePrice = readClampedNumber("#subscriptionPrice", 0, 0, INPUT_LIMITS.basePriceMax);
         var hiddenFees = readClampedNumber("#hiddenFees", 0, 0, INPUT_LIMITS.hiddenFeesMax);
         var annualIncreasePercent = readClampedNumber("#inflationRate", 0, 0, INPUT_LIMITS.annualIncreaseMax);
-        var years = Math.round(readClampedNumber("#durationYears", 1, 1, INPUT_LIMITS.yearsMax));
+        var years = Math.round(readClampedNumber("#durationYears", 0, 0, INPUT_LIMITS.yearsMax));
         var annualIncrease = annualIncreasePercent / 100;
 
         // Keep inputs aligned with enforced limits in all environments.
