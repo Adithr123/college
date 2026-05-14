@@ -30,6 +30,8 @@
             slidesPerView: 1.15,
           }
         },
+        mousewheel: true,
+        grabCursor: true,
       });
 
       function buildYearSlides(years, baseMonthly, feeMonthly, annualIncrease) {
