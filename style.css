@@ -581,7 +581,7 @@ body {
 }
 
 .timeline-card .year-breakdown li strong {
-    color: var(--white-color);
+    color: #9ba8b9;
 }
 
 .year-pill {
