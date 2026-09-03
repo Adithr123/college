@@ -14,6 +14,13 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body data-bs-theme="light">
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Particle Background -->
+    <canvas id="bg-particles" aria-hidden="true"></canvas>
+
     <!-- Navigation -->
     <nav id="top" class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -40,16 +47,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <p class="eyebrow mb-3">Freshman at UC Riverside</p>
-                    <h1 class="hero-title mb-4">
+                    <p class="eyebrow mb-3 reveal-up">Freshman at UC Riverside</p>
+                    <h1 class="hero-title mb-4 reveal-up">
                         Hi, I'm <span class="accent-text">Adith</span>.
                     </h1>
-                    <p class="hero-subtitle mb-5">
+                    <p class="hero-subtitle mb-5 reveal-up">
                         Freshman at UC Riverside studying General Chemistry on a pre-med track. I've built hands-on medical experience through clinical rotations, BLS/CPR certification, and community service — and I'm driven by a commitment to accessible, compassionate healthcare.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#clinical" class="btn btn-outline-light me-3">My Clinical Experience</a>
-                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                        <a href="#clinical" class="btn btn-outline-light me-3 magnetic-btn">My Clinical Experience</a>
+                        <a href="#contact" class="btn btn-primary magnetic-btn">Get in Touch</a>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -60,15 +67,15 @@
                             </div>
                         </div>
                         <div class="hero-stats">
-                            <div class="stat-card text-center">
+                            <div class="stat-card text-center reveal-up reveal-delay-1">
                                 <span>UC Riverside</span>
                                 <strong>Freshman</strong>
                             </div>
-                            <div class="stat-card text-center">
+                            <div class="stat-card text-center reveal-up reveal-delay-2">
                                 <span>Certifications</span>
                                 <strong>3</strong>
                             </div>
-                            <div class="stat-card text-center">
+                            <div class="stat-card text-center reveal-up reveal-delay-3">
                                 <span>Experience</span>
                                 <strong>3+ yrs</strong>
                             </div>
@@ -84,30 +91,30 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
-                    <div class="section-heading">
+                    <div class="section-heading reveal-left">
                         <p class="section-kicker mb-3">About Me</p>
                         <h2>A little about who I am and what drives me.</h2>
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="glass-card p-4 mb-4">
+                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-1">
                         <h4 class="mb-3">Personal Statement</h4>
                         <p>
                             I'm a freshman at UC Riverside studying General Chemistry on a pre-med track, studying to become a pediatrician. I believe the most impactful healthcare happens when you combine clinical skill with genuine empathy — recognizing when someone needs help before they even ask. This philosophy shapes everything I do, from co-founding a tutoring club that served over 200 students to volunteering at community events and serving as a certified lifeguard and BLS provider.
                         </p>
                     </div>
-                    <div class="glass-card p-4 mb-4">
+                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-2">
                         <h4 class="mb-3">Community Philosophy</h4>
                         <p>
                             The people who need help most are often the least likely to ask for it. I witnessed this firsthand when I noticed Spanish-speaking families struggling at a community event. I took the initiative to add Spanish translations to every sign in my section — transforming an inaccessible space into one where everyone felt welcome. That experience taught me that effective leadership means noticing who's being left out and removing barriers before they have to ask.
                         </p>
                     </div>
-                    <div class="glass-card p-4">
+                    <div class="glass-card p-4 reveal-up reveal-delay-3">
                         <h4 class="mb-3">Languages</h4>
                         <div class="d-flex gap-3 flex-wrap">
-                            <span class="lang-pill"><span class="lang-dot lang-dot--en"></span> English — Native</span>
-                            <span class="lang-pill"><span class="lang-dot lang-dot--es"></span> Spanish — Fluent</span>
-                            <span class="lang-pill"><span class="lang-dot lang-dot--ta"></span> Tamil — Conversational</span>
+                            <span class="lang-pill reveal-left reveal-delay-1"><span class="lang-dot lang-dot--en"></span> English — Native</span>
+                            <span class="lang-pill reveal-left reveal-delay-2"><span class="lang-dot lang-dot--es"></span> Spanish — Fluent</span>
+                            <span class="lang-pill reveal-left reveal-delay-3"><span class="lang-dot lang-dot--ta"></span> Tamil — Conversational</span>
                         </div>
                     </div>
                 </div>
@@ -120,14 +127,14 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
-                    <div class="section-heading">
+                    <div class="section-heading reveal-left">
                         <p class="section-kicker mb-3">Education</p>
                         <h2>Where I've studied and what I've learned.</h2>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <!-- UC Riverside -->
-                    <div class="timeline-card glass-card p-4 mb-4">
+                    <div class="timeline-card glass-card p-4 mb-4 reveal-up reveal-delay-1">
                         <div class="d-flex align-items-start gap-3 mb-3">
                             <div class="timeline-icon">🎓</div>
                             <div class="flex-grow-1">
@@ -145,7 +152,7 @@
                     </div>
 
                     <!-- Leigh High School -->
-                    <div class="timeline-card glass-card p-4 mb-4">
+                    <div class="timeline-card glass-card p-4 mb-4 reveal-up reveal-delay-2">
                         <div class="d-flex align-items-start gap-3 mb-3">
                             <div class="timeline-icon">🏫</div>
                             <div class="flex-grow-1">
@@ -168,7 +175,7 @@
                     </div>
 
                     <!-- West Valley College -->
-                    <div class="timeline-card glass-card p-4 mb-4">
+                    <div class="timeline-card glass-card p-4 mb-4 reveal-up reveal-delay-3">
                         <div class="d-flex align-items-start gap-3 mb-3">
                             <div class="timeline-icon">🏛️</div>
                             <div class="flex-grow-1">
@@ -190,7 +197,7 @@
                     </div>
 
                     <!-- SV CTE -->
-                    <div class="timeline-card glass-card p-4">
+                    <div class="timeline-card glass-card p-4 reveal-up reveal-delay-4">
                         <div class="d-flex align-items-start gap-3 mb-3">
                             <div class="timeline-icon">🏥</div>
                             <div class="flex-grow-1">
@@ -214,14 +221,14 @@
     <!-- Achievements & Certifications -->
     <section id="achievements" class="section-pad">
         <div class="container">
-            <div class="section-heading text-center mx-auto mb-5">
+            <div class="section-heading text-center mx-auto mb-5 reveal-up">
                 <p class="section-kicker mb-3">Achievements</p>
                 <h2>Certifications, awards, and milestones.</h2>
             </div>
             <div class="row g-4">
                 <!-- BLS/CPR -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="achievement-card glass-card p-4 text-center h-100">
+                    <div class="achievement-card glass-card p-4 text-center h-100 reveal-up reveal-delay-1">
                         <div class="achievement-icon mb-3">❤️</div>
                         <h5 class="mb-2">BLS / CPR Certification</h5>
                         <p class="mb-2" style="font-size: 0.9rem;">American Heart Association</p>
@@ -231,7 +238,7 @@
                 </div>
                 <!-- Lifeguard -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="achievement-card glass-card p-4 text-center h-100">
+                    <div class="achievement-card glass-card p-4 text-center h-100 reveal-up reveal-delay-2">
                         <div class="achievement-icon mb-3">🏊</div>
                         <h5 class="mb-2">Lifeguard Certification</h5>
                         <p class="mb-2" style="font-size: 0.9rem;">American Red Cross</p>
@@ -241,7 +248,7 @@
                 </div>
                 <!-- Dean's List -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="achievement-card glass-card p-4 text-center h-100">
+                    <div class="achievement-card glass-card p-4 text-center h-100 reveal-up reveal-delay-3">
                         <div class="achievement-icon mb-3">🏆</div>
                         <h5 class="mb-2">Dean's List</h5>
                         <p class="mb-2" style="font-size: 0.9rem;">West Valley College</p>
@@ -251,7 +258,7 @@
                 </div>
                 <!-- Tutoring Club -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="achievement-card glass-card p-4 text-center h-100">
+                    <div class="achievement-card glass-card p-4 text-center h-100 reveal-up reveal-delay-4">
                         <div class="achievement-icon mb-3">📚</div>
                         <h5 class="mb-2">Tutoring Club Co-Founder</h5>
                         <p class="mb-2" style="font-size: 0.9rem;">Leigh High School</p>
@@ -261,7 +268,7 @@
                 </div>
                 <!-- Medical Terminology -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="achievement-card glass-card p-4 text-center h-100">
+                    <div class="achievement-card glass-card p-4 text-center h-100 reveal-up reveal-delay-5">
                         <div class="achievement-icon mb-3">🧬</div>
                         <h5 class="mb-2">Medical Terminology</h5>
                         <p class="mb-2" style="font-size: 0.9rem;">West Valley College</p>
@@ -271,7 +278,7 @@
                 </div>
                 <!-- Jazz Ensemble -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="achievement-card glass-card p-4 text-center h-100">
+                    <div class="achievement-card glass-card p-4 text-center h-100 reveal-up reveal-delay-6">
                         <div class="achievement-icon mb-3">🎷</div>
                         <h5 class="mb-2">Jazz Ensemble</h5>
                         <p class="mb-2" style="font-size: 0.9rem;">Leigh High School</p>
@@ -288,13 +295,13 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
-                    <div class="section-heading">
+                    <div class="section-heading reveal-left">
                         <p class="section-kicker mb-3">Experience</p>
                         <h2>Where I've worked and what I've contributed.</h2>
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="glass-card p-4 mb-4">
+                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-1">
                         <div class="d-flex align-items-start gap-3">
                             <div class="timeline-icon">🏥</div>
                             <div class="flex-grow-1">
@@ -309,7 +316,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-4 mb-4">
+                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-2">
                         <div class="d-flex align-items-start gap-3">
                             <div class="timeline-icon">🏊</div>
                             <div class="flex-grow-1">
@@ -324,7 +331,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-4">
+                    <div class="glass-card p-4 reveal-up reveal-delay-3">
                         <div class="d-flex align-items-start gap-3">
                             <div class="timeline-icon">🍽️</div>
                             <div class="flex-grow-1">
@@ -348,11 +355,11 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
-                    <div class="section-heading">
+                    <div class="section-heading reveal-left">
                         <p class="section-kicker mb-3">Clinical Exposure</p>
                         <h2>Hands-on experience in healthcare settings.</h2>
                     </div>
-                    <p class="mb-4" style="max-width: 480px;">
+                    <p class="mb-4" style="max-width: 480px;" class="reveal-up reveal-delay-1">
                         I've sought out every opportunity to gain practical medical experience, from clinical rotations to emergency response training. Here's what I've done so far:
                     </p>
                 </div>
@@ -360,7 +367,7 @@
                     <div class="row g-3">
                         <!-- Medical Assistant Training -->
                         <div class="col-md-6">
-                            <div class="glass-card p-4 h-100">
+                            <div class="glass-card p-4 h-100 reveal-up reveal-delay-1">
                                 <div class="d-flex align-items-start gap-3 mb-2">
                                     <div class="clinical-icon">💉</div>
                                     <div class="flex-grow-1">
@@ -373,7 +380,7 @@
                         </div>
                         <!-- BLS/CPR -->
                         <div class="col-md-6">
-                            <div class="glass-card p-4 h-100">
+                            <div class="glass-card p-4 h-100 reveal-up reveal-delay-2">
                                 <div class="d-flex align-items-start gap-3 mb-2">
                                     <div class="clinical-icon">❤️</div>
                                     <div class="flex-grow-1">
@@ -386,7 +393,7 @@
                         </div>
                         <!-- Lifeguard -->
                         <div class="col-md-6">
-                            <div class="glass-card p-4 h-100">
+                            <div class="glass-card p-4 h-100 reveal-up reveal-delay-3">
                                 <div class="d-flex align-items-start gap-3 mb-2">
                                     <div class="clinical-icon">🏊</div>
                                     <div class="flex-grow-1">
@@ -399,7 +406,7 @@
                         </div>
                         <!-- Medical Terminology -->
                         <div class="col-md-6">
-                            <div class="glass-card p-4 h-100">
+                            <div class="glass-card p-4 h-100 reveal-up reveal-delay-4">
                                 <div class="d-flex align-items-start gap-3 mb-2">
                                     <div class="clinical-icon">🧬</div>
                                     <div class="flex-grow-1">
@@ -421,13 +428,13 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-5">
-                    <div class="section-heading">
+                    <div class="section-heading reveal-left">
                         <p class="section-kicker mb-3">Community</p>
                         <h2>Service, leadership, and making a difference.</h2>
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="glass-card p-4 mb-4">
+                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-1">
                         <div class="d-flex align-items-start gap-3">
                             <div class="timeline-icon">📖</div>
                             <div class="flex-grow-1">
@@ -437,7 +444,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-4 mb-4">
+                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-2">
                         <div class="d-flex align-items-start gap-3">
                             <div class="timeline-icon">🏛️</div>
                             <div class="flex-grow-1">
@@ -447,7 +454,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-4">
+                    <div class="glass-card p-4 reveal-up reveal-delay-3">
                         <div class="d-flex align-items-start gap-3">
                             <div class="timeline-icon">🎤</div>
                             <div class="flex-grow-1">
@@ -467,12 +474,12 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="text-center mb-5">
+                    <div class="text-center mb-5 reveal-up">
                         <p class="section-kicker mb-3">Contact</p>
                         <h2>Let's connect and work together.</h2>
                         <p class="mb-4">I'm always open to new opportunities in healthcare, volunteering, shadowing, and community service. I'd love to connect and discuss how I can contribute to your organization.</p>
                     </div>
-                    <div class="glass-card p-5">
+                    <div class="glass-card p-5 reveal-up reveal-delay-1">
                         <div class="row g-4">
                             <div class="col-md-4 text-center">
                                 <div class="contact-icon mb-2">📧</div>
