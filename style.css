@@ -60,7 +60,7 @@ html {
 @media (hover: none) {
     .glass-card,
     .achievement-card,
-    .timeline-card {
+    .edu-card {
         min-height: 60px;
         cursor: default;
     }
@@ -316,58 +316,23 @@ body {
     height: 220px;
     border-radius: 50%;
     padding: 4px;
-    background: conic-gradient(
-        from 0deg,
-        var(--accent-color),
-        rgba(88, 131, 255, 0.6),
-        rgba(255, 193, 93, 0.6),
-        var(--accent-color)
-    );
-    animation: avatarSpin 10s linear infinite;
+    background: var(--accent-color);
     position: relative;
-}
-
-@keyframes avatarSpin {
-    0% { filter: hue-rotate(0deg) brightness(1); }
-    50% { filter: hue-rotate(180deg) brightness(1.1); }
-    100% { filter: hue-rotate(360deg) brightness(1); }
 }
 
 .hero-avatar-inner {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: var(--black-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     overflow: hidden;
+    position: relative;
 }
 
 .avatar-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 35%;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.hero-avatar-ring::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 180deg,
-        rgba(123, 211, 137, 0.3),
-        transparent 30%,
-        rgba(88, 131, 255, 0.3),
-        transparent 60%
-    );
-    z-index: -1;
-    animation: avatarSpin 4s linear infinite reverse;
+    object-position: center;
 }
 
 /* Hero Stats */
@@ -535,14 +500,58 @@ body {
 /* ========================================
    TIMELINE / EDUCATION
 ======================================== */
-.timeline-card {
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+/* ========================================
+   EDUCATION
+======================================== */
+.edu-card {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(123, 211, 137, 0.1);
+    background: rgba(13, 19, 26, 0.65);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.timeline-card:hover {
-    transform: translateX(8px);
+.edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(123, 211, 137, 0.08),
+        transparent
+    );
+    transition: left 0.6s ease;
 }
-.timeline-card .timeline-icon {
+
+.edu-card:hover::before {
+    left: 100%;
+}
+
+.edu-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(123, 211, 137, 0.3) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(123, 211, 137, 0.15),
+                0 0 80px rgba(123, 211, 137, 0.05);
+}
+
+.edu-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.edu-icon {
     width: 52px;
     height: 52px;
     border-radius: 12px;
@@ -550,39 +559,95 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
     border: 1px solid rgba(123, 211, 137, 0.18);
-    transition: all 0.3s ease;
 }
 
-.timeline-card:hover .timeline-icon {
-    transform: rotate(5deg) scale(1.1);
-    border-color: rgba(123, 211, 137, 0.3);
+.edu-main {
+    flex-grow: 1;
+    min-width: 0;
 }
 
-.timeline-card h4 {
+.edu-main h3 {
     font-family: var(--heading-font);
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff !important;
+    margin-bottom: 0.15rem;
+    line-height: 1.3;
 }
 
-.timeline-card .year-breakdown {
-    padding-left: 1.2rem;
-    margin-top: 0.75rem;
-}
-
-.timeline-card .year-breakdown li {
+.edu-location {
     color: #9ba8b9;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.edu-badge-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.edu-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(123, 211, 137, 0.15), rgba(123, 211, 137, 0.08));
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(123, 211, 137, 0.2);
+}
+
+.edu-sub {
+    color: #9ba8b9;
+    font-size: 0.8rem;
+}
+
+.edu-tag {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid rgba(123, 211, 137, 0.2);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(123, 211, 137, 0.1), rgba(123, 211, 137, 0.05));
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+}
+
+.edu-details {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.edu-details li {
+    position: relative;
+    padding-left: 1.2rem;
+    color: #ffffff !important;
     font-size: 0.92rem;
     line-height: 1.6;
     margin-bottom: 0.3rem;
 }
 
-.timeline-card.glass-card .year-breakdown li strong {
-    color: #9ba8b9 !important;
+.edu-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(123, 211, 137, 0.5);
 }
+
 
 .year-pill {
     display: inline-flex;
@@ -603,21 +668,6 @@ body {
     box-shadow: 0 4px 12px rgba(123, 211, 137, 0.2);
 }
 
-.timeline-note {
-    padding: 0.4rem 0.9rem;
-    border: 1px solid rgba(123, 211, 137, 0.2);
-    border-radius: 999px;
-    background: linear-gradient(135deg, rgba(123, 211, 137, 0.1), rgba(123, 211, 137, 0.05));
-    font-size: 0.75rem;
-    display: inline-block;
-    margin-top: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.timeline-card:hover .timeline-note {
-    background: linear-gradient(135deg, rgba(123, 211, 137, 0.15), rgba(123, 211, 137, 0.08));
-    border-color: rgba(123, 211, 137, 0.3);
-}
 
 /* ========================================
    ACHIEVEMENT CARDS
@@ -1015,11 +1065,11 @@ body {
         color: #ffffff !important;
     }
 
-    .timeline-card {
+    .edu-card {
         flex-direction: column !important;
     }
 
-    .timeline-icon {
+    .edu-icon {
         margin-bottom: 0.75rem;
     }
 
@@ -1106,20 +1156,15 @@ body {
         height: 64px;
     }
 
-    .timeline-card,
-    .timeline-card .year-breakdown {
+    .edu-card,
+    .edu-card .edu-details {
         padding-left: 0;
     }
 
-    .timeline-icon {
+    .edu-icon {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
-    }
-
-    .timeline-note {
-        display: inline-block;
-        margin-top: 0.75rem;
     }
 
     .stat-card {
