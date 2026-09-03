@@ -1,202 +1,512 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<title>Subscription Cost Explorer</title>
-	<link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-	<link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Adith Radharamanan — Pre-med student, community leader, and aspiring pediatrician at Leigh High School." />
+    <meta name="author" content="Adith Radharamanan" />
+    <title>Adith Radharamanan — Portfolio</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+<body data-bs-theme="light">
+    <!-- Navigation -->
+    <!-- Background Art -->
+    <div class="page-background-art" aria-hidden="true">
+        <img src="images/background.svg" alt="" />
+    </div>
 
-<body>
-	<div class="page-background-art" aria-hidden="true">
-		<img src="images/background.svg" alt="" />
-	</div>
-	<div class="container mt-3">
-		<ul class="nav nav-tabs" id="mainTabs" role="tablist">
-			<li class="nav-item" role="presentation">
-				<button class="nav-link active" id="main-tab" data-bs-toggle="tab" data-bs-target="#main" type="button"
-					role="tab" aria-controls="main" aria-selected="true">Main</button>
-			</li>
-			<li class="nav-item" role="presentation">
-				<button class="nav-link" id="hidden-tab" data-bs-toggle="tab" data-bs-target="#hidden" type="button"
-					role="tab" aria-controls="hidden" aria-selected="false">Hidden costs</button>
-			</li>
-			<li class="nav-item" role="presentation">
-				<button class="nav-link" id="resources-tab" data-bs-toggle="tab" data-bs-target="#resources" type="button"
-					role="tab" aria-controls="resources" aria-selected="false">Resources</button>
-			</li>
-		</ul>
-		<div class="tab-content pt-4" id="mainTabsContent">
-			<div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby="main-tab">
-				<div class="main-popup-layer" id="mainPopupLayer" aria-hidden="true"></div>
-				<div class="row">
-					<div class="col-lg-6">
+    <!-- Navigation -->
+    <nav id="top" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">AR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#clinical">Clinical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-						<div class="glass-card p-4">
-							<h3>Why should you care?</h3>
-							<p>  Not paying attention to subscriptions and hidden fees can end up costing you more money than you anticipate. These small monthly charges can seem inexpensive and affordable at first, but over time, they tend to accumulate, just like a snowball. Hidden fees and automatic renewals often result in you paying for things you never think to purchase. Furthermore, companies sometimes make it difficult to cancel, causing the subscription charges to continue. These future additional costs can strain your budget and deplete your savings. Staying vigilant about your subscriptions, including their actual cost, as well as hidden fees, helps you maintain control over your finances and avoid wasting money.</p>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="glass-card calculator-card p-4">
-							<h3>Cost visualizer</h3>
-							<div class="section-art section-art--cost mb-3">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-shell">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="eyebrow mb-3">Pre-Med Student &amp; Community Leader</p>
+                    <h1 class="hero-title mb-4">
+                        Hi, I'm <span class="accent-text">Adith</span>.
+                    </h1>
+                    <p class="hero-subtitle mb-5">
+                        Senior at Leigh High School with a 4.21 GPA, enrolled in the Middle College program at West Valley College. Co-founder of my school's Tutoring Club (200+ members), fluent in Spanish, and passionate about healthcare, community service, and making a difference in people's lives.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#clinical" class="btn btn-primary me-3">My Clinical Experience</a>
+                        <a href="#contact" class="btn btn-outline-light">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-visual d-flex flex-column align-items-center">
+                        <div class="hero-avatar-ring mb-4">
+                            <div class="hero-avatar-inner">
+                                <span class="avatar-initials">AR</span>
+                            </div>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-card text-center">
+                                <span>GPA</span>
+                                <strong>4.21</strong>
+                            </div>
+                            <div class="stat-card text-center">
+                                <span>Certifications</span>
+                                <strong>3</strong>
+                            </div>
+                            <div class="stat-card text-center">
+                                <span>Courses</span>
+                                <strong>10+</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-							</div>
-							<div class="mb-3">
-								<label class="form-label">Monthly subscription price</label>
-								<div class="input-group">
-									<span class="input-group-text">$</span>
-									<input id="subscriptionPrice" class="form-control" type="number" min="0" max="1000" step="0.01" value="12.99">
-								</div>
-							</div>
-							<div class="mb-3">
-								<label class="form-label">Hidden monthly fees</label>
-								<div class="input-group">
-									<span class="input-group-text">$</span>
-									<input id="hiddenFees" class="form-control" type="number" min="0" max="1000" step="0.01" value="4.00">
-								</div>
-							</div>
-							<div class="mb-3 row">
-								<div class="col-6">
-									<label class="form-label">Annual increase (%)</label>
-									<input id="inflationRate" class="form-control" type="number" min="0" max="200" step="0.1" value="6">
-								</div>
-								<div class="col-6">
-									<label class="form-label">Duration (years)</label>
-									<input id="durationYears" class="form-control" type="number" min="0" max="20" step="1" value="4">
-								</div>
-							</div>
-							<div class="highlight-box p-3">
-								<div class="d-flex justify-content-between">
-									<span>Monthly total</span>
-									<strong id="monthlyTotal">$0</strong>
-								</div>
-								<div class="d-flex justify-content-between">
-									<span>First year total</span>
-									<strong id="yearOneTotal">$0</strong>
-								</div>
-								<div class="d-flex justify-content-between">
-									<span>All years combined</span>
-									<strong id="lifetimeTotal">$0</strong>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+    <!-- About Section -->
+    <section id="about" class="section-pad">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="section-heading">
+                        <p class="section-kicker mb-3">About Me</p>
+                        <h2>A little about who I am and what drives me.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 mb-4">
+                        <h4 class="mb-3">Personal Statement</h4>
+                        <p>
+                            I'm a junior at Leigh High School enrolled in the Middle College program, studying to become a pediatrician. I believe the most impactful healthcare happens when you combine technical skill with genuine empathy — recognizing when someone needs help before they even ask. This philosophy shapes everything I do, from co-founding a tutoring club that serves over 200 students to volunteering at community events and serving as a certified lifeguard and BLS provider.
+                        </p>
+                    </div>
+                    <div class="glass-card p-4 mb-4">
+                        <h4 class="mb-3">Community Philosophy</h4>
+                        <p>
+                            The people who need help most are often the least likely to ask for it. I witnessed this firsthand when I noticed Spanish-speaking families struggling at a community event. I took the initiative to add Spanish translations to every sign in my section — transforming an inaccessible space into one where everyone felt welcome. That experience taught me that effective leadership means noticing who's being left out and removing barriers before they have to ask.
+                        </p>
+                    </div>
+                    <div class="glass-card p-4">
+                        <h4 class="mb-3">Languages</h4>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <span class="lang-pill"><span class="lang-dot lang-dot--en"></span> English — Native</span>
+                            <span class="lang-pill"><span class="lang-dot lang-dot--es"></span> Spanish — Fluent</span>
+                            <span class="lang-pill"><span class="lang-dot lang-dot--ta"></span> Tamil — Conversational</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<div class="row mt-4">
-					<div class="col-12">
-						<div class="glass-card p-3 main-visualizer-shell">
-							<div class="cost-popup-layer" id="costPopupLayer" aria-hidden="true"></div>
-							<h4>Per-year visualizer</h4>
-							<div class="section-art section-art--year mt-3 mb-3">
-							</div>
-							<div class="swiper cost-swiper mt-3">
-								<div class="swiper-wrapper" id="yearSlides"></div>
-								<div class="swiper-pagination cost-swiper-pagination"></div>
-							</div>
-						</div>
-					</div>
-				</div>
+    <!-- Education Section -->
+    <section id="education" class="section-pad">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="section-heading">
+                        <p class="section-kicker mb-3">Education</p>
+                        <h2>Where I've studied and what I've learned.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <!-- Leigh High School -->
+                    <div class="timeline-card glass-card p-4 mb-4">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="timeline-icon">🎓</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Leigh High School</h4>
+                                <p class="mb-1">San Jose, CA — Class of 2026</p>
+                                <span class="timeline-note">Middle College Program — West Valley College</span>
+                            </div>
+                            <div class="text-end">
+                                <span class="year-pill">4.21 GPA</span>
+                                <p class="mb-0 mt-1" style="font-size: 0.8rem; color: #9ba8b9;">Rank #3</p>
+                            </div>
+                        </div>
+                        <ul class="year-breakdown">
+                            <li>Pre-med track with focus on Biological Sciences</li>
+                            <li>AP Spanish, Calculus, Chemistry with Lab</li>
+                            <li>Co-founder &amp; President, Tutoring Club</li>
+                            <li>Jazz Ensemble (2019 – present)</li>
+                            <li>Presented at college preparatory group meetings</li>
+                        </ul>
+                    </div>
 
-				<div class="row mt-4">
-					<div class="col-12">
-						<div class="glass-card p-4">
-							<div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
-								<div>
-									<p class="mb-0" > About the website:</p>
-									<p></p>
-									<p>Subscriptions and hidden fees are a way for companies to extract extra money out of customers’ pockets when done as an intentionally harmful and predatory practice. This can include increasing prices in recurring subscriptions, hidden service charges, and unadvertised monetary caveats. The website can be used as a tool to know exactly how much money you waste on subscriptions and the hidden feeds. Young adults can use it to see how these fees harm their finances, causing their money to vanish little by little until they run deep, unexpected budget deficits. The website also offers the option to show you how much a subscription will actually cost, guiding the consumer towards more conscious spending.  </p>
-									<p> 
+                    <!-- West Valley College -->
+                    <div class="timeline-card glass-card p-4 mb-4">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="timeline-icon">🏛️</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">West Valley College</h4>
+                                <p class="mb-1">Los Gatos, CA — Associate in Science</p>
+                                <span class="timeline-note">Middle College Student</span>
+                            </div>
+                            <div class="text-end">
+                                <span class="year-pill">Dean's List</span>
+                            </div>
+                        </div>
+                        <ul class="year-breakdown">
+                            <li><strong>Calculus/Analytic Geometry</strong> — A (5 credits)</li>
+                            <li><strong>College Success</strong> — A (3 credits)</li>
+                            <li><strong>Chemistry (AS-UCTP)</strong> — In Progress</li>
+                            <li><strong>General Psychology</strong> — B (3 credits)</li>
+                            <li><strong>Basic Medical Terminology</strong> — B (3 credits)</li>
+                            <li>Ecology of the Sierra Nevada — Fieldwork immersion</li>
+                        </ul>
+                    </div>
 
-									</p>
-									<p >Made with ❤️ by Juanita Taborda-Arias, Olivia Tran, Aliva Kar, and Adith Radharamanan</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                    <!-- SV CTE -->
+                    <div class="timeline-card glass-card p-4">
+                        <div class="d-flex align-items-start gap-3 mb-3">
+                            <div class="timeline-icon">🏥</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Silicon Valley CTE</h4>
+                                <p class="mb-1">Medical Assistant Training Program</p>
+                                <span class="timeline-note">Clinical Certification</span>
+                            </div>
+                        </div>
+                        <ul class="year-breakdown">
+                            <li>Took vital signs on real patients</li>
+                            <li>Blood drawing with clinical precision</li>
+                            <li>Patient interaction and clinical rotations</li>
+                            <li>Familiar with medical practice protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			<div class="tab-pane fade" id="hidden" role="tabpanel" aria-labelledby="hidden-tab">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="glass-card p-4">
-							<h3>Hidden fees</h3>
-							<p class="hidden-caption">Hidden fees are unadvertised fees that are typically automatically charged when purchasing a good or service. This comes in many forms like purchasable embedded advertisement removers in free apps, wifi charges at hotels, and additional per-night surcharges for pets at pet-friendly hotels. Hidden fees can be very misleading and cause consumers to become discouraged and fatigued when buying goods and services. These hidden fees can be anywhere from up to $10 to $200. In some cases where these hidden fees are not disclosed, class-action lawsuits can be taken against predatory companies. </p>
-							<div class="fee-expanders mt-3">
-								<div class="fee-expander">
-									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeActivation" aria-expanded="false" aria-controls="feeActivation">Activation fees</button>
-									<div class="collapse fee-expander-body" id="feeActivation"><p>Activation fees can count as initial deposits. For example, many dance studios will advertise their costs per class or their programs but fail to announce their first-time registration fee. This can be anywhere from $5 to $90. These types of hidden activation fees are found in many different types of services. </p></div>
-								</div>
-								<div class="fee-expander">
-									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeTax" aria-expanded="false" aria-controls="feeTax">Service charges</button>
-									<div class="collapse fee-expander-body" id="feeTax"><p>Service charges are nonadvertised fees for services. In the hotel business, these can be internet fees, food fees, cleaning fees, etc. Combined, these service charges quickly build up to rack up a final price that ends up way higher than what consumers are expecting.</p></div>
-								</div>
-								<div class="fee-expander">
-									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeStorage" aria-expanded="false" aria-controls="feeStorage">Add-ons</button>
-									<div class="collapse fee-expander-body" id="feeStorage"><p>Add-ons come in many forms but become predatory when they are excessive. For example, a game that is advertised to be “free” could have ads every 10 seconds and advertise their ad-removal package. Or, this could be at a gym, where certain facilities cost extra.</p></div>
-								</div>
-								<div class="fee-expander">
-									<button class="fee-expander-header" type="button" data-bs-toggle="collapse" data-bs-target="#feeRenewal" aria-expanded="false" aria-controls="feeRenewal">Auto-renewals / Price jumps</button>
-									<div class="collapse fee-expander-body" id="feeRenewal"><p>Auto-renewals become problematic when free trials auto-renew and charge the customer when their free trial ends instead of cancelling their subscription. Price jumps in auto-renewal fees are when recurring subscriptions (ex: Netflix or Spotify) gradually increase their monthly cost with minimal advertisement to the customer. This leads to extra money being spent by the consumer while being unaccounted for in their budget. </p></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="glass-card p-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;">
-							<h4 class="mb-3">Your money dissapearing</h4>
-							<div class="money-pile" id="moneyPile"></div>
-							<p class="mt-3 text-center" style="color: white;">Watch as subscriptions drain your account over time.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+    <!-- Achievements & Certifications -->
+    <section id="achievements" class="section-pad">
+        <div class="container">
+            <div class="section-heading text-center mx-auto mb-5">
+                <p class="section-kicker mb-3">Achievements</p>
+                <h2>Certifications, awards, and milestones.</h2>
+            </div>
+            <div class="row g-4">
+                <!-- BLS/CPR -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="achievement-card glass-card p-4 text-center h-100">
+                        <div class="achievement-icon mb-3">❤️</div>
+                        <h5 class="mb-2">BLS / CPR Certification</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">American Heart Association</p>
+                        <span class="year-pill">Issued Jan 2026</span>
+                        <p class="mb-0 mt-2" style="font-size: 0.8rem; color: #9ba8b9;">Valid through Jan 2028</p>
+                    </div>
+                </div>
+                <!-- Lifeguard -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="achievement-card glass-card p-4 text-center h-100">
+                        <div class="achievement-icon mb-3">🏊</div>
+                        <h5 class="mb-2">Lifeguard Certification</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">American Red Cross</p>
+                        <span class="year-pill">Certified 2023</span>
+                        <p class="mb-0 mt-2" style="font-size: 0.8rem; color: #9ba8b9;">Los Gatos High School Pool</p>
+                    </div>
+                </div>
+                <!-- Dean's List -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="achievement-card glass-card p-4 text-center h-100">
+                        <div class="achievement-icon mb-3">🏆</div>
+                        <h5 class="mb-2">Dean's List</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">West Valley College</p>
+                        <span class="year-pill">Fall 2024</span>
+                        <p class="mb-0 mt-2" style="font-size: 0.8rem; color: #9ba8b9;">Multiple A grades</p>
+                    </div>
+                </div>
+                <!-- Tutoring Club -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="achievement-card glass-card p-4 text-center h-100">
+                        <div class="achievement-icon mb-3">📚</div>
+                        <h5 class="mb-2">Tutoring Club Co-Founder</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">Leigh High School</p>
+                        <span class="year-pill">200+ Members</span>
+                        <p class="mb-0 mt-2" style="font-size: 0.8rem; color: #9ba8b9;">In-person &amp; online services</p>
+                    </div>
+                </div>
+                <!-- Medical Terminology -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="achievement-card glass-card p-4 text-center h-100">
+                        <div class="achievement-icon mb-3">🧬</div>
+                        <h5 class="mb-2">Medical Terminology</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">West Valley College</p>
+                        <span class="year-pill">Grade: B</span>
+                        <p class="mb-0 mt-2" style="font-size: 0.8rem; color: #9ba8b9;">3 credits completed</p>
+                    </div>
+                </div>
+                <!-- Jazz Ensemble -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="achievement-card glass-card p-4 text-center h-100">
+                        <div class="achievement-icon mb-3">🎷</div>
+                        <h5 class="mb-2">Jazz Ensemble</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">Leigh High School</p>
+                        <span class="year-pill">2019 – Present</span>
+                        <p class="mb-0 mt-2" style="font-size: 0.8rem; color: #9ba8b9;">5+ years of musical dedication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			<div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
-				<div class="glass-card p-4">
-					<h3>Resources</h3>
-					<p>Links to resources and refrences used:</p>
-					<div>
-						<p><a href="https://www.youtube.com/watch?v=qNS77ruuSWg" target="_blank" rel="noopener noreferrer">How Can I Avoid Hidden Fees?</a></p>
-						<ul>
-						<li>Actually notice they exist</li>
-						<li>Ask to waive fees</li>
-						<li>Try finding a different seller</li>
-						<li>Try not to use optional services</li>
-						<li>See if the seller has some sort of loyalty program</li>
-						</ul>
-						</p>
-						<p><a href="https://www.youtube.com/watch?v=zuy8FslxWv0" target="_blank" rel="noopener noreferrer">Here are the Hidden Fees You’re Paying Because of the Affordability Crisis”</a></p>
-						<ul>
-						<li>Restaurants, hotels, airlines, etc. create extra fees like “services fees” or “processing fees.” </li>
-						<li>These fees allow them to keep their advertised price while adding extra charges to increase the price subtly.</li>
-						</ul>
-						</p>
-						<p><a href="https://www.forbes.com/sites/nathanpettijohn/2024/05/07/the-recurring-problems-with-subscription-services/" target="_blank" rel="noopener noreferrer">The Recurring Problems With Subscription Services</a></p>
-						<ul>
-						<li>Many websites that offer subscriptions try to maximize the customer’s screen time and revenue rather than customer satisfaction.</li>
-						<li>These websites make it difficult to cancel your subscription, making it harder for customers to stop paying extra fees.</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Experience Section -->
+    <section id="experience" class="section-pad">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="section-heading">
+                        <p class="section-kicker mb-3">Experience</p>
+                        <h2>Where I've worked and what I've contributed.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 mb-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="timeline-icon">🏥</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Medical Assistant Training</h4>
+                                <p class="mb-1" style="color: #9ba8b9;">Silicon Valley CTE</p>
+                                <ul class="year-breakdown mt-2">
+                                    <li>Took vital signs on real patients with increasing confidence</li>
+                                    <li>Drew blood with clinical precision and steady hands</li>
+                                    <li>Navigated patient interaction and clinical rotations</li>
+                                    <li>Learned to balance technical precision with genuine human connection</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 mb-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="timeline-icon">🏊</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Lifeguard</h4>
+                                <p class="mb-1" style="color: #9ba8b9;">Los Gatos High School Pool</p>
+                                <ul class="year-breakdown mt-2">
+                                    <li>Maintained constant vigilance over swimmers' safety</li>
+                                    <li>Responded to emergencies with calm, trained precision</li>
+                                    <li>Built great relationships with pool guests and staff</li>
+                                    <li>Worked extensive shifts during summer programs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="timeline-icon">🍽️</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Cafeteria Worker</h4>
+                                <p class="mb-1" style="color: #9ba8b9;">Leigh High School</p>
+                                <ul class="year-breakdown mt-2">
+                                    <li>Maintained excellent work ethic in a fast-paced environment</li>
+                                    <li>Took initiative to keep operations running smoothly</li>
+                                    <li>Built strong relationships with coworkers and students</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-	<script type="text/javascript" src="js/script.js?v=20260513"></script>
+    <!-- Projects Section -->
+    <section id="clinical" class="section-pad">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="section-heading">
+                        <p class="section-kicker mb-3">Clinical Exposure</p>
+                        <h2>Hands-on experience in healthcare settings.</h2>
+                    </div>
+                    <p class="mb-4" style="max-width: 480px;">
+                        I've sought out every opportunity to gain practical medical experience, from clinical rotations to emergency response training. Here's what I've done so far:
+                    </p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-3">
+                        <!-- Medical Assistant Training -->
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <div class="d-flex align-items-start gap-3 mb-2">
+                                    <div class="clinical-icon">💉</div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="mb-1">Medical Assistant Training</h5>
+                                        <p style="font-size: 0.85rem; color: #9ba8b9;">Silicon Valley CTE</p>
+                                        <p style="font-size: 0.9rem;">Completed a full semester of clinical training — taking vital signs on real patients, drawing blood with clinical precision, and navigating the complexities of patient interaction through hands-on rotations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- BLS/CPR -->
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <div class="d-flex align-items-start gap-3 mb-2">
+                                    <div class="clinical-icon">❤️</div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="mb-1">BLS / CPR &amp; AED Certification</h5>
+                                        <p style="font-size: 0.85rem; color: #9ba8b9;">American Heart Association</p>
+                                        <p style="font-size: 0.9rem;">Certified in Basic Life Support including CPR and AED use. Trained to respond effectively in emergency medical situations until professional help arrives.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Lifeguard -->
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <div class="d-flex align-items-start gap-3 mb-2">
+                                    <div class="clinical-icon">🏊</div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="mb-1">Lifeguard &amp; Emergency Response</h5>
+                                        <p style="font-size: 0.85rem; color: #9ba8b9;">Los Gatos High School Pool</p>
+                                        <p style="font-size: 0.9rem;">Maintained constant vigilance over swimmers' safety, responded to water emergencies with trained precision, and applied first aid protocols as needed.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Medical Terminology -->
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <div class="d-flex align-items-start gap-3 mb-2">
+                                    <div class="clinical-icon">🧬</div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="mb-1">Medical Terminology</h5>
+                                        <p style="font-size: 0.85rem; color: #9ba8b9;">West Valley College</p>
+                                        <p style="font-size: 0.9rem;">Completed 3 credits of medical terminology coursework, learning the language of healthcare including anatomical terms, disease processes, and clinical procedures.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Volunteering -->
+    <section id="community" class="section-pad">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="section-heading">
+                        <p class="section-kicker mb-3">Community</p>
+                        <h2>Service, leadership, and making a difference.</h2>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 mb-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="timeline-icon">📖</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Tutoring Club — Co-Founder &amp; President</h4>
+                                <p class="mb-2" style="color: #9ba8b9;">Leigh High School · 2023 – Present</p>
+                                <p>Co-founded a tutoring club that operates both in-person and online, allowing students to ask for help anonymously and at any time. The club now serves over 200 members, many of whom are first-time help-seekers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 mb-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="timeline-icon">🏛️</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Library Volunteer</h4>
+                                <p class="mb-2" style="color: #9ba8b9;">Local Library</p>
+                                <p>Volunteered at the "Reimagining the Unhoused" event, where I managed the clothing area and used my Spanish fluency to help non-English-speaking attendees navigate the event. Added Spanish translations to all signs, making the space accessible for Spanish-speaking families.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="timeline-icon">🎤</div>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">College Program Advocate</h4>
+                                <p class="mb-2" style="color: #9ba8b9;">West Valley College</p>
+                                <p>Invited to present to prospective students and share my Middle College journey with families, friends, parents, and college preparatory groups — addressing questions about the program and highlighting its benefits.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-pad">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <p class="section-kicker mb-3">Contact</p>
+                        <h2>Let's connect and work together.</h2>
+                        <p class="mb-4">I'm always open to new opportunities in healthcare, volunteering, shadowing, and community service. I'd love to connect and discuss how I can contribute to your organization.</p>
+                    </div>
+                    <div class="glass-card p-5">
+                        <div class="row g-4">
+                            <div class="col-md-4 text-center">
+                                <div class="contact-icon mb-2">📧</div>
+                                <p class="mb-1" style="font-size: 0.8rem; color: #9ba8b9;">Email</p>
+                                <a href="mailto:adith08@gmail.com" class="text-decoration-none" style="color: var(--accent-color);">adith08@gmail.com</a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="contact-icon mb-2">💼</div>
+                                <p class="mb-1" style="font-size: 0.8rem; color: #9ba8b9;">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/adithradh/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: var(--accent-color);">Adith Radharamanan</a>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="contact-icon mb-2">📱</div>
+                                <p class="mb-1" style="font-size: 0.8rem; color: #9ba8b9;">Phone</p>
+                                <a href="tel:+16696009091" class="text-decoration-none" style="color: var(--accent-color);">(669) 600-9091</a>
+                            </div>
+                        </div>
+                        <hr class="mt-4 mb-4" style="border-color: rgba(123, 211, 137, 0.14);" />
+                        <div class="text-center">
+                            <p style="font-size: 0.85rem; color: #9ba8b9;">San Jose, CA · Born Feb 13, 2008 · (669) 600-9091</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="py-4">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <p class="mb-0" style="font-size: 0.85rem; color: #9ba8b9;">
+                    © 2026 Adith Radharamanan. Built with care.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/adithradh/" target="_blank" rel="noopener noreferrer" class="social-link" style="color: #9ba8b9;">LinkedIn</a>
+                    <a href="mailto:adith08@gmail.com" class="social-link" style="color: #9ba8b9;">Email</a>
+                    <a href="tel:+16696009091" class="social-link" style="color: #9ba8b9;">Call</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
-
 </html>

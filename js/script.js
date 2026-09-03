@@ -1,233 +1,258 @@
-(function($) {
+/* ========================================
+   NAVBAR SCROLL EFFECT
+======================================== */
+(function () {
+    const navbar = document.getElementById('top');
+    let lastScroll = 0;
 
-    "use strict";
-
-    $(document).ready(function() {
-      function formatCurrency(value) {
-        return new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-          maximumFractionDigits: 0,
-        }).format(value);
-      }
-
-      function readNumber(selector, fallback) {
-        var value = parseFloat($(selector).val());
-        return Number.isFinite(value) && value >= 0 ? value : fallback;
-      }
-
-      var INPUT_LIMITS = {
-        basePriceMax: 1000,
-        hiddenFeesMax: 1000,
-        annualIncreaseMax: 200,
-        yearsMax: 20
-      };
-
-      function clampNumber(value, min, max) {
-        return Math.min(max, Math.max(min, value));
-      }
-
-      function readClampedNumber(selector, fallback, min, max) {
-        return clampNumber(readNumber(selector, fallback), min, max);
-      }
-
-      var costSwiper = new Swiper(".cost-swiper", {
-        slidesPerGroup: 1,
-        speed: 450,
-        spaceBetween: 18,
-        pagination: {
-            el: ".cost-swiper-pagination",
-            clickable: true,
-          },
-        breakpoints: {
-          0: {
-            slidesPerView: 1,
-          },
-          992: {
-            slidesPerView: 1.15,
-          }
-        },
-        mousewheel: {
-          enabled: true,
-          forceToAxis: false,
-          eventsTarget: ".cost-swiper",
-          invert: false,
-          thresholdDelta: 20,
-          thresholdTime: 450,
-          sensitivity: 0.5,
-          releaseOnEdges: true
-        },
-        longSwipesRatio: 0.2,
-        longSwipesMs: 350,
-        grabCursor: true,
-      });
-
-      function buildYearSlides(years, baseMonthly, feeMonthly, annualIncrease) {
-        var slideMarkup = "";
-        var cumulative = 0;
-
-        for (var year = 1; year <= years; year += 1) {
-          var growthFactor = Math.pow(1 + annualIncrease, year - 1);
-          var adjustedBase = baseMonthly * growthFactor;
-          var adjustedFees = feeMonthly * growthFactor;
-          var monthlyTotal = adjustedBase + adjustedFees;
-          var annualTotal = monthlyTotal * 12;
-          cumulative += annualTotal;
-
-          slideMarkup += '<div class="swiper-slide">';
-          slideMarkup += '<article class="year-card">';
-          slideMarkup += '<div class="year-pill">Year ' + year + '</div>';
-          slideMarkup += '<h4>' + formatCurrency(annualTotal) + '</h4>';
-          slideMarkup += '<p>Monthly total: ' + formatCurrency(monthlyTotal) + '</p>';
-          slideMarkup += '<ul class="year-breakdown">';
-          slideMarkup += '<li>Base subscription: ' + formatCurrency(adjustedBase) + ' per month</li>';
-          slideMarkup += '<li>Hidden fees: ' + formatCurrency(adjustedFees) + ' per month</li>';
-          slideMarkup += '<li>Cumulative total: ' + formatCurrency(cumulative) + '</li>';
-          slideMarkup += '</ul>';
-          slideMarkup += '</article>';
-          slideMarkup += '</div>';
+    function handleScroll() {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
+        lastScroll = currentScroll;
+    }
 
-        $("#yearSlides").html(slideMarkup);
-        costSwiper.update();
-      }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+})();
 
-      function updateSummary() {
-        var basePrice = readClampedNumber("#subscriptionPrice", 0, 0, INPUT_LIMITS.basePriceMax);
-        var hiddenFees = readClampedNumber("#hiddenFees", 0, 0, INPUT_LIMITS.hiddenFeesMax);
-        var annualIncreasePercent = readClampedNumber("#inflationRate", 0, 0, INPUT_LIMITS.annualIncreaseMax);
-        var years = Math.round(readClampedNumber("#durationYears", 0, 0, INPUT_LIMITS.yearsMax));
-        var annualIncrease = annualIncreasePercent / 100;
-
-        // Keep inputs aligned with enforced limits in all environments.
-        $("#subscriptionPrice").val(basePrice.toFixed(2));
-        $("#hiddenFees").val(hiddenFees.toFixed(2));
-        $("#inflationRate").val(annualIncreasePercent);
-        $("#durationYears").val(years);
-
-        var monthlyTotal = basePrice + hiddenFees;
-        var yearOneTotal = monthlyTotal * 12;
-        var lifetimeTotal = 0;
-
-        for (var year = 1; year <= years; year += 1) {
-          var growthFactor = Math.pow(1 + annualIncrease, year - 1);
-          var yearlyMonthly = (basePrice + hiddenFees) * growthFactor;
-          lifetimeTotal += yearlyMonthly * 12;
+/* ========================================
+   SMOOTH SCROLL FOR NAV LINKS
+======================================== */
+document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        // Close mobile nav
+        const navCollapse = document.querySelector('.navbar-collapse');
+        if (navCollapse && navCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+            if (bsCollapse) bsCollapse.hide();
+        }
+    });
+});
 
-        $("#monthlyTotal, #heroMonthly").text(formatCurrency(monthlyTotal));
-        $("#yearOneTotal, #heroYearOne").text(formatCurrency(yearOneTotal));
-        $("#lifetimeTotal, #heroLifetime").text(formatCurrency(lifetimeTotal));
+/* ========================================
+   ACTIVE NAV LINK ON SCROLL
+======================================== */
+(function () {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-        var baseSpan = Math.max(basePrice, 1);
-        var feeShare = hiddenFees / baseSpan;
-        var inflationShare = annualIncreasePercent / 20;
+    function updateActiveLink() {
+        const scrollPos = window.scrollY + 150;
 
-        $("#baseBar").css("width", "100%");
-        $("#feeBar").css("width", Math.min(100, 25 + feeShare * 60) + "%");
-        $("#inflationBar").css("width", Math.min(100, 20 + inflationShare * 80) + "%");
+        sections.forEach(function (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
 
-        buildYearSlides(years, basePrice, hiddenFees, annualIncrease);
-      }
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
 
-      $("#subscriptionPrice, #hiddenFees, #inflationRate, #durationYears").on("input change", updateSummary);
-      updateSummary();
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+})();
 
-      var subscriptions = [
-        { name: "Spotify", cost: 11.99 },
-        { name: "Netflix", cost: 15.49 },
-        { name: "Hulu", cost: 7.99 },
-        { name: "Disney+", cost: 7.99 },
-        { name: "Apple Music", cost: 10.99 },
-        { name: "Amazon Prime", cost: 14.99 },
-        { name: "HBO Max", cost: 9.99 },
-        { name: "DoorDash Pass", cost: 9.99 },
-        { name: "Uber Pass", cost: 9.99 },
-        { name: "Gym Membership", cost: 50 },
-        { name: "Phone Plan", cost: 75 },
-        { name: "Internet", cost: 65 },
-        { name: "Adobe CC", cost: 54.99 },
-        { name: "Dropbox Plus", cost: 11.99 },
-        { name: "iCloud+", cost: 9.99 },
-        { name: "YouTube Premium", cost: 13.99 },
-        { name: "Paramount+", cost: 5.99 },
-        { name: "Audible", cost: 14.95 }
-      ];
+/* ========================================
+   SCROLL REVEAL ANIMATIONS
+======================================== */
+(function () {
+    const revealElements = document.querySelectorAll('.reveal');
+    let hasIntersected = false;
 
-      function spawnCostPopup() {
-        var layer = $("#mainPopupLayer");
-        if (!layer.length) return;
+    function revealOnScroll() {
+        const windowHeight = window.innerHeight;
 
-        var layerWidth = window.innerWidth;
-        var layerHeight = window.innerHeight;
-        var popup = $("<div class='cost-popup'></div>");
-        
-        var subscription = subscriptions[Math.floor(Math.random() * subscriptions.length)];
-        var popupTop = Math.random() * Math.max(layerHeight - 90, 0);
-        var popupLeft = Math.random() * Math.max(layerWidth - 140, 0);
-        var popupHue = Math.floor(Math.random() * 40) + 330;
-        var popupScale = 0.9 + Math.random() * 0.45;
+        revealElements.forEach(function (el) {
+            const elementTop = el.getBoundingClientRect().top;
+            const revealPoint = 120;
 
-        popup.html("<div style='font-size: 0.8rem; opacity: 0.8;'>" + subscription.name + "</div><div>-$" + subscription.cost.toFixed(2) + "</div>");
-        popup.css({
-          top: popupTop + "px",
-          left: popupLeft + "px",
-          color: "hsl(" + popupHue + ", 95%, 66%)",
-          transform: "scale(" + popupScale + ") rotate(" + (Math.random() * 10 - 5) + "deg)",
-          textAlign: "center",
-          lineHeight: "1.2"
+            if (elementTop < windowHeight - revealPoint) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
+    // Use IntersectionObserver for better performance
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
         });
 
-        layer.append(popup);
+        revealElements.forEach(function (el) {
+            observer.observe(el);
+        });
+    } else {
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        revealOnScroll();
+    }
+})();
 
-        window.setTimeout(function() {
-          popup.addClass("is-visible");
-        }, 20);
+/* ========================================
+   COUNTER ANIMATION FOR STATS
+======================================== */
+(function () {
+    const statNumbers = document.querySelectorAll('.stat-card strong');
+    let animated = false;
 
-        window.setTimeout(function() {
-          popup.removeClass("is-visible").addClass("is-leaving");
-        }, 1500);
+    function animateCounters() {
+        if (animated) return;
 
-        window.setTimeout(function() {
-          popup.remove();
-        }, 2300);
-      }
+        const heroSection = document.getElementById('hero');
+        if (!heroSection) return;
 
-      spawnCostPopup();
-      window.setInterval(spawnCostPopup, 8000);
+        const rect = heroSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            animated = true;
 
-      // Money pile disappearing animation on hidden costs tab
-      function initMoneyPile() {
-        var moneyPile = $("#moneyPile");
-        if (moneyPile.length === 0) return;
-        
-        moneyPile.html("");
-        var totalBills = 50;
-        for (var i = 0; i < totalBills; i++) {
-          var bill = $("<div class='money-bill'></div>");
-          moneyPile.append(bill);
-        }
+            statNumbers.forEach(function (el) {
+                const targetText = el.textContent.trim();
+                const targetNum = parseFloat(targetText);
 
-        var visibleBills = totalBills;
-        var interval = setInterval(function() {
-          if (visibleBills > 0) {
-            var billToRemove = Math.floor(Math.random() * visibleBills);
-            $(".money-bill").eq(billToRemove).fadeOut(400, function() {
-              $(this).remove();
+                if (isNaN(targetNum)) return;
+
+                const hasPlus = targetText.includes('+');
+                const hasDot = targetText.includes('.');
+                const duration = 1500;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Ease out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = eased * targetNum;
+
+                    if (hasDot) {
+                        el.textContent = current.toFixed(2) + (hasPlus ? '+' : '');
+                    } else {
+                        el.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        el.textContent = targetText;
+                    }
+                }
+
+                requestAnimationFrame(update);
             });
-            visibleBills--;
-          } else {
-            clearInterval(interval);
-            setTimeout(initMoneyPile, 2000);
-          }
-        }, 300);
-      }
+        }
+    }
 
-      // Initialize money pile when hidden tab is shown
-      $('#hidden-tab').on('shown.bs.tab', function() {
-        initMoneyPile();
-      });
+    window.addEventListener('scroll', animateCounters, { passive: true });
+    animateCounters();
+})();
 
-    }); // End of a document ready
+/* ========================================
+   PARALLAX-LIKE HERO ELEMENTS
+======================================== */
+(function () {
+    const heroShell = document.querySelector('.hero-shell');
+    if (!heroShell) return;
 
-})(jQuery);
+    function handleParallax() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * 0.15;
+
+        const title = heroShell.querySelector('.hero-title');
+        const subtitle = heroShell.querySelector('.hero-subtitle');
+        const stats = heroShell.querySelector('.hero-stats');
+
+        if (title) title.style.transform = 'translateY(' + rate * 0.3 + 'px)';
+        if (subtitle) subtitle.style.transform = 'translateY(' + rate * 0.5 + 'px)';
+        if (stats) stats.style.transform = 'translateY(' + rate * 0.7 + 'px)';
+    }
+
+    window.addEventListener('scroll', handleParallax, { passive: true });
+})();
+
+/* ========================================
+   TILT EFFECT ON CARDS
+======================================== */
+(function () {
+    const cards = document.querySelectorAll('.glass-card');
+
+    cards.forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -3;
+            const rotateY = ((x - centerX) / centerX) * 3;
+
+            card.style.transform =
+                'translateY(-4px) perspective(1000px) rotateX(' +
+                rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+            card.style.transform = '';
+        });
+    });
+})();
+
+/* ========================================
+   PAGE LOAD ANIMATION
+======================================== */
+(function () {
+    // Fade in hero content
+    const heroContent = document.querySelectorAll('.hero-shell > .container > .row > *');
+    heroContent.forEach(function (el, i) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease ' + (i * 0.15) + 's, transform 0.6s ease ' + (i * 0.15) + 's';
+
+        setTimeout(function () {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, 100);
+    });
+
+    // Fade in other sections on scroll
+    document.querySelectorAll('section:not(#hero)').forEach(function (section) {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    });
+
+    const sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('section:not(#hero)').forEach(function (section) {
+        sectionObserver.observe(section);
+    });
+})();
