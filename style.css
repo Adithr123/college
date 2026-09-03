@@ -494,38 +494,39 @@ body {
 /* ========================================
    LANGUAGES
 ======================================== */
-.lang-pill {
+.lang-chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    gap: 0.6rem;
+    padding: 0.55rem 1.1rem;
     border-radius: 999px;
     background: rgba(123, 211, 137, 0.06);
-    border: 1px solid rgba(123, 211, 137, 0.12);
+    border: 1px solid rgba(123, 211, 137, 0.15);
     font-size: 0.9rem;
     color: var(--white-color);
+    font-weight: 500;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    cursor: default;
 }
 
-.lang-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
+.lang-chip:hover {
+    border-color: rgba(123, 211, 137, 0.35);
+    background: rgba(123, 211, 137, 0.10);
+    transform: translateY(-2px);
 }
 
-.lang-dot--en {
-    background: #7bd389;
-    box-shadow: 0 0 8px rgba(123, 211, 137, 0.4);
+.lang-flag {
+    font-size: 1.15rem;
+    line-height: 1;
 }
 
-.lang-dot--es {
-    background: #ffc107;
-    box-shadow: 0 0 8px rgba(255, 193, 93, 0.4);
-}
-
-.lang-dot--ta {
-    background: #8854d0;
-    box-shadow: 0 0 8px rgba(136, 84, 208, 0.4);
+.lang-level {
+    margin-left: auto;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* ========================================
