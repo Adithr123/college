@@ -29,7 +29,7 @@
         // Dynamic scale based on mouse speed
         const dist = Math.sqrt((mouseX - ringX) ** 2 + (mouseY - ringY) ** 2);
         currentScale = Math.min(Math.max(1 + dist * 0.001, 1), 1.5);
-        ring.style.transform = `scale(${currentScale})`;
+        ring.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
     });
 
     // Hover states for interactive elements

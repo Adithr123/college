@@ -455,6 +455,30 @@ body {
 /* ========================================
    GLASS CARD
 ======================================== */
+.glass-card h4 {
+    font-family: var(--heading-font);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white-color);
+    margin-bottom: 0.75rem;
+}
+
+.glass-card h5 {
+    font-family: var(--heading-font);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white-color);
+    margin-bottom: 0.5rem;
+}
+
+.glass-card p:not([style]) {
+    color: var(--bs-body-color);
+}
+
+.glass-card p[style*="color"] {
+    color: #c5d0dc !important;
+}
+
 .glass-card {
     border-radius: 1.5rem;
     padding: 1.5rem;
@@ -969,6 +993,14 @@ body {
         padding: 1.25rem;
     }
 
+    .glass-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .glass-card h5 {
+        font-size: 1rem;
+    }
+
     .timeline-card {
         flex-direction: column !important;
     }
@@ -1038,6 +1070,14 @@ body {
 
     .glass-card {
         padding: 1rem;
+    }
+
+    .glass-card h4 {
+        font-size: 1rem;
+    }
+
+    .glass-card h5 {
+        font-size: 0.95rem;
     }
 
     .achievement-card {
