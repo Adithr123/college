@@ -103,7 +103,7 @@ body {
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--bs-body-color) !important;
+    color: #4a5568 !important;
     transition: color 0.25s ease;
     position: relative;
 }
@@ -122,6 +122,11 @@ body {
 .nav-link:hover,
 .nav-link.active {
     color: var(--accent-color) !important;
+}
+
+/* Hide background art overlay */
+.page-background-art {
+    display: none;
 }
 
 .nav-link:hover::after,
