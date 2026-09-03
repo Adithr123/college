@@ -438,7 +438,7 @@ body {
     font-family: var(--heading-font);
     font-size: 2.75rem;
     font-weight: 800;
-    color: var(--white-color);
+    color: #ffffff !important;
     line-height: 1.2;
     letter-spacing: -0.03em;
     margin-bottom: 0.5rem;
@@ -459,7 +459,7 @@ body {
     font-family: var(--heading-font);
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--white-color);
+    color: #ffffff !important;
     margin-bottom: 0.75rem;
 }
 
@@ -467,16 +467,28 @@ body {
     font-family: var(--heading-font);
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--white-color);
+    color: #ffffff !important;
     margin-bottom: 0.5rem;
 }
 
-.glass-card p:not([style]) {
-    color: var(--bs-body-color);
+.glass-card p {
+    color: #ffffff !important;
 }
 
-.glass-card p[style*="color"] {
-    color: #c5d0dc !important;
+.glass-card li {
+    color: #ffffff !important;
+}
+
+.glass-card span {
+    color: #ffffff !important;
+}
+
+.glass-card a {
+    color: #ffffff !important;
+}
+
+.glass-card strong {
+    color: #ffffff !important;
 }
 
 .glass-card {
@@ -553,7 +565,7 @@ body {
     font-family: var(--heading-font);
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--white-color);
+    color: #ffffff !important;
 }
 
 .timeline-card .year-breakdown {
@@ -650,7 +662,7 @@ body {
     font-family: var(--heading-font);
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--white-color);
+    color: #ffffff !important;
 }
 
 /* ========================================
@@ -995,10 +1007,12 @@ body {
 
     .glass-card h4 {
         font-size: 1.1rem;
+        color: #ffffff !important;
     }
 
     .glass-card h5 {
         font-size: 1rem;
+        color: #ffffff !important;
     }
 
     .timeline-card {
@@ -1074,10 +1088,12 @@ body {
 
     .glass-card h4 {
         font-size: 1rem;
+        color: #ffffff !important;
     }
 
     .glass-card h5 {
         font-size: 0.95rem;
+        color: #ffffff !important;
     }
 
     .achievement-card {
@@ -1232,48 +1248,27 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: #7bd389;
     border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
     transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    mix-blend-mode: difference;
-}
-
-.cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid rgba(123, 211, 137, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 8px rgba(123, 211, 137, 0.5);
 }
 
 .cursor-dot.hover {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: #c1f1c8;
-}
-
-.cursor-ring.hover {
-    width: 56px;
-    height: 56px;
-    border-color: rgba(123, 211, 137, 0.8);
-    background: rgba(123, 211, 137, 0.06);
+    box-shadow: 0 0 14px rgba(123, 211, 137, 0.8);
 }
 
 /* Hide custom cursor on touch devices */
 @media (pointer: coarse) {
-    .cursor-dot,
-    .cursor-ring {
+    .cursor-dot {
         display: none !important;
     }
 }

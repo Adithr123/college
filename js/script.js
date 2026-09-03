@@ -2,48 +2,27 @@
    CUSTOM CURSOR
 ======================================== */
 (function () {
-    // Only on non-touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
-    const dot = document.querySelector('.cursor-dot');
-    const ring = document.querySelector('.cursor-ring');
-    if (!dot || !ring) return;
+    const cursor = document.querySelector('.cursor-dot');
+    if (!cursor) return;
 
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
-    let currentScale = 1;
+    cursor.style.display = 'block';
 
     document.addEventListener('mousemove', function (e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        // Dot follows instantly
-        dot.style.left = mouseX + 'px';
-        dot.style.top = mouseY + 'px';
-        
-        // Update ring position
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        ring.style.left = ringX + 'px';
-        ring.style.top = ringY + 'px';
-        
-        // Dynamic scale based on mouse speed
-        const dist = Math.sqrt((mouseX - ringX) ** 2 + (mouseY - ringY) ** 2);
-        currentScale = Math.min(Math.max(1 + dist * 0.001, 1), 1.5);
-        ring.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
-    // Hover states for interactive elements
     const hoverTargets = 'a, button, .glass-card, .stat-card, .lang-chip, input, textarea, .achievement-card, .timeline-card';
     document.addEventListener('mouseover', function (e) {
         if (e.target.closest(hoverTargets)) {
-            dot.classList.add('hover');
-            ring.classList.add('hover');
+            cursor.classList.add('hover');
         }
     });
     document.addEventListener('mouseout', function (e) {
         if (e.target.closest(hoverTargets)) {
-            dot.classList.remove('hover');
-            ring.classList.remove('hover');
+            cursor.classList.remove('hover');
         }
     });
 })();
