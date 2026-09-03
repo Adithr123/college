@@ -497,36 +497,33 @@ body {
 .lang-chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.55rem 1.1rem;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
     border-radius: 999px;
-    background: rgba(123, 211, 137, 0.06);
-    border: 1px solid rgba(123, 211, 137, 0.15);
-    font-size: 0.9rem;
+    background: rgba(52, 58, 42, 0.7);
+    border: 1px solid rgba(123, 211, 137, 0.2);
+    font-size: 0.88rem;
     color: var(--white-color);
     font-weight: 500;
-    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    letter-spacing: 0.02em;
+    transition: border-color 0.25s ease, background 0.25s ease;
     cursor: default;
 }
 
 .lang-chip:hover {
-    border-color: rgba(123, 211, 137, 0.35);
-    background: rgba(123, 211, 137, 0.10);
-    transform: translateY(-2px);
+    border-color: rgba(123, 211, 137, 0.4);
+    background: rgba(52, 58, 42, 0.9);
 }
 
-.lang-flag {
-    font-size: 1.15rem;
-    line-height: 1;
-}
-
-.lang-level {
-    margin-left: auto;
-    font-size: 0.78rem;
+.lang-chip .lang-name {
     font-weight: 600;
+}
+
+.lang-chip .lang-level {
+    margin-left: 0.5rem;
+    font-size: 0.78rem;
     color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-weight: 400;
 }
 
 /* ========================================
