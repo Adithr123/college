@@ -13,6 +13,7 @@
     --gray-color-800: #dfe7ef;
     --light-gray-color: #9ba8b9;
     --primary-color: #7bd389;
+    --bs-primary: #7bd389;
     --bs-body-color: #d7e0ea;
     --bs-secondary-color: #11161b;
     --bs-secondary-rgb: 17, 22, 27;
@@ -191,12 +192,14 @@ body {
     font-family: var(--heading-font);
     font-size: 4rem;
     font-weight: 800;
+    color: #f7f7f2;
     color: var(--white-color);
     line-height: 1.15;
     letter-spacing: -0.03em;
 }
 
 .hero-title .accent-text {
+    color: #7bd389;
     color: var(--accent-color);
     position: relative;
 }
@@ -204,6 +207,7 @@ body {
 .hero-subtitle {
     font-size: 1.1rem;
     line-height: 1.7;
+    color: #9ba8b9;
     color: var(--light-gray-color);
     max-width: 560px;
 }
