@@ -11,7 +11,6 @@
 
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
-    let currentScale = 1;
 
     document.addEventListener('mousemove', function (e) {
         mouseX = e.clientX;
@@ -19,21 +18,20 @@
         // Dot follows instantly
         dot.style.left = mouseX + 'px';
         dot.style.top = mouseY + 'px';
-        
-        // Update ring position
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        ring.style.left = ringX + 'px';
-        ring.style.top = ringY + 'px';
-        
-        // Dynamic scale based on mouse speed
-        const dist = Math.sqrt((mouseX - ringX) ** 2 + (mouseY - ringY) ** 2);
-        currentScale = Math.min(Math.max(1 + dist * 0.001, 1), 1.5);
-        ring.style.transform = `scale(${currentScale})`;
     });
 
+    // Ring follows with slight lag for smoothness
+    function animateRing() {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
     // Hover states for interactive elements
-    const hoverTargets = 'a, button, .glass-card, .stat-card, .lang-chip, input, textarea, .achievement-card, .timeline-card';
+    const hoverTargets = 'a, button, .glass-card, .stat-card, .lang-pill, input, textarea';
     document.addEventListener('mouseover', function (e) {
         if (e.target.closest(hoverTargets)) {
             dot.classList.add('hover');
@@ -55,25 +53,19 @@
     const canvas = document.getElementById('bg-particles');
     if (!canvas) return;
 
-    // Only run on desktop and tablet
-    if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 767) {
+    // Only run on desktop
+    if (window.matchMedia('(pointer: coarse)').matches) {
         canvas.style.display = 'none';
         return;
     }
 
     const ctx = canvas.getContext('2d');
     let particles = [];
-    
-    // Adjust particle count based on screen size
-    const PARTICLE_COUNT = window.innerWidth < 1024 ? 30 : 50;
-    const CONNECTION_DISTANCE = window.innerWidth < 1024 ? 100 : 150;
-    const REPULSION_DISTANCE = window.innerWidth < 1024 ? 80 : 120;
-    const REPULSION_FORCE = window.innerWidth < 1024 ? 0.4 : 0.5;
+    const PARTICLE_COUNT = 50;
 
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        createParticles();
     }
     resize();
     window.addEventListener('resize', resize);
@@ -84,10 +76,10 @@
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
                 size: Math.random() * 1.5 + 0.5,
-                opacity: Math.random() * 0.5 + 0.15
+                opacity: Math.random() * 0.5 + 0.1
             });
         }
     }
@@ -95,15 +87,7 @@
 
     // Mouse interaction
     let mouseParticle = { x: canvas.width / 2, y: canvas.height / 2 };
-    let mouseVelocity = { x: 0, y: 0 };
-    let lastMousePosition = { x: canvas.width / 2, y: canvas.height / 2 };
-    let mouseMoved = false;
-
     document.addEventListener('mousemove', function (e) {
-        mouseVelocity.x = e.clientX - lastMousePosition.x;
-        mouseVelocity.y = e.clientY - lastMousePosition.y;
-        lastMousePosition = { x: e.clientX, y: e.clientY };
-        mouseMoved = true;
         mouseParticle.x = e.clientX;
         mouseParticle.y = e.clientY;
     });
@@ -116,27 +100,25 @@
             p.x += p.vx;
             p.y += p.vy;
 
-            // Add mouse influence
-            if (mouseMoved) {
-                const dx = p.x - mouseParticle.x;
-                const dy = p.y - mouseParticle.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < REPULSION_DISTANCE) {
-                    const force = (REPULSION_DISTANCE - dist) / REPULSION_DISTANCE * REPULSION_FORCE;
-                    p.vx += (dx / dist) * force * 0.1;
-                    p.vy += (dy / dist) * force * 0.1;
-                }
-            }
-
-            // Dampen velocity
-            p.vx *= 0.98;
-            p.vy *= 0.98;
-
             // Wrap around
             if (p.x < 0) p.x = canvas.width;
             if (p.x > canvas.width) p.x = 0;
             if (p.y < 0) p.y = canvas.height;
             if (p.y > canvas.height) p.y = 0;
+
+            // Mouse repulsion
+            const dx = p.x - mouseParticle.x;
+            const dy = p.y - mouseParticle.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+                const force = (120 - dist) / 120 * 0.5;
+                p.vx += (dx / dist) * force * 0.1;
+                p.vy += (dy / dist) * force * 0.1;
+            }
+
+            // Dampen velocity
+            p.vx *= 0.99;
+            p.vy *= 0.99;
 
             // Draw particle
             ctx.beginPath();
@@ -151,8 +133,8 @@
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < CONNECTION_DISTANCE) {
-                    const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
+                if (dist < 150) {
+                    const opacity = (1 - dist / 150) * 0.15;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
@@ -163,7 +145,6 @@
             }
         }
 
-        mouseMoved = false;
         requestAnimationFrame(draw);
     }
     draw();
@@ -328,15 +309,15 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 
     function handleParallax() {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.08;
+        const rate = scrolled * 0.15;
 
         const title = heroShell.querySelector('.hero-title');
         const subtitle = heroShell.querySelector('.hero-subtitle');
         const stats = heroShell.querySelector('.hero-stats');
 
-        if (title) title.style.transform = 'translateY(' + rate * 0.3 + 'px) scale(' + (1 - rate * 0.0005) + ')';
-        if (subtitle) subtitle.style.transform = 'translateY(' + rate * 0.5 + 'px) scale(' + (1 - rate * 0.0003) + ')';
-        if (stats) stats.style.transform = 'translateY(' + rate * 0.7 + 'px) scale(' + (1 - rate * 0.0002) + ')';
+        if (title) title.style.transform = 'translateY(' + rate * 0.3 + 'px)';
+        if (subtitle) subtitle.style.transform = 'translateY(' + rate * 0.5 + 'px)';
+        if (stats) stats.style.transform = 'translateY(' + rate * 0.7 + 'px)';
     }
 
     window.addEventListener('scroll', handleParallax, { passive: true });
@@ -356,11 +337,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
+            const rotateX = ((y - centerY) / centerY) * -3;
+            const rotateY = ((x - centerX) / centerX) * 3;
 
             card.style.transform =
-                'translateY(-6px) perspective(1000px) rotateX(' +
+                'translateY(-4px) perspective(1000px) rotateX(' +
                 rotateX + 'deg) rotateY(' + rotateY + 'deg)';
         });
 
@@ -395,35 +376,35 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
    PAGE LOAD ANIMATION
 ======================================== */
 (function () {
-    // Fade in hero content with staggered animation
+    // Fade in hero content
     const heroContent = document.querySelectorAll('.hero-shell > .container > .row > *');
     heroContent.forEach(function (el, i) {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(50px) scale(0.95)';
-        el.style.transition = 'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) ' + (i * 0.12) + 's, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ' + (i * 0.12) + 's';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease ' + (i * 0.15) + 's, transform 0.6s ease ' + (i * 0.15) + 's';
 
         setTimeout(function () {
             el.style.opacity = '1';
-            el.style.transform = 'translateY(0) scale(1)';
+            el.style.transform = 'translateY(0)';
         }, 100);
     });
 
     // Fade in other sections on scroll
-    document.querySelectorAll('section:not(#hero)').forEach(function (section, index) {
+    document.querySelectorAll('section:not(#hero)').forEach(function (section) {
         section.style.opacity = '0';
-        section.style.transform = 'translateY(50px) scale(0.98)';
-        section.style.transition = 'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) ' + (index * 0.08 + 0.2) + 's, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ' + (index * 0.08 + 0.2) + 's';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
     });
 
     const sectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0) scale(1)';
+                entry.target.style.transform = 'translateY(0)';
                 sectionObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -80px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
 
     document.querySelectorAll('section:not(#hero)').forEach(function (section) {
         sectionObserver.observe(section);
