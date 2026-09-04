@@ -1,119 +1,46 @@
-// ========================================
-// Custom Cursor
-// ========================================
-const cursorDot = document.querySelector('.cursor-dot');
+// Custom cursor
+document.addEventListener('DOMContentLoaded', () => {
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    const interactives = document.querySelectorAll('a, button, .btn-email');
 
-if (cursorDot) {
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+    if (cursorDot && cursorRing) {
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    const animateCursor = () => {
-        if (mouseX && mouseY) {
-            // Smooth easing
-            const ease = 0.15;
-            cursorX += (mouseX - cursorX) * ease;
-            cursorY += (mouseY - cursorY) * ease;
-
-            cursorDot.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-        }
-        requestAnimationFrame(animateCursor);
-    };
-
-    animateCursor();
-}
-
-// ========================================
-// Particle Background
-// ========================================
-const canvas = document.getElementById('bg-particles');
-const ctx = canvas ? canvas.getContext('2d') : null;
-
-if (canvas && ctx) {
-    let width, height;
-    let particles = [];
-    const particleCount = 60;
-    const particleSpeed = 0.3;
-    const particleSize = 1.5;
-
-    const resize = () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * particleSpeed;
-            this.vy = (Math.random() - 0.5) * particleSpeed;
-            this.alpha = Math.random() * 0.3 + 0.1;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-
-            // Wrap around screen
-            if (this.x < 0) this.x = width;
-            if (this.x > width) this.x = 0;
-            if (this.y < 0) this.y = height;
-            if (this.y > height) this.y = 0;
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, particleSize, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(123, 211, 137, ${this.alpha})`;
-            ctx.fill();
-        }
-    }
-
-    // Create particles
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-
-    // Animation loop
-    const animate = () => {
-        ctx.clearRect(0, 0, width, height);
-
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
         });
 
-        requestAnimationFrame(animate);
-    };
+        // Smooth ring follow
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
 
-    animate();
-}
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        });
 
-// ========================================
-// Navbar Scroll Effect
-// ========================================
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+        document.addEventListener('mousemove', (e) => {
+            if (cursorRing.classList.contains('hover')) {
+                cursorDot.classList.add('hover');
+            } else {
+                cursorDot.classList.remove('hover');
+            }
+        });
     }
 });
 
-// ========================================
-// Smooth Scroll for Anchor Links
-// ========================================
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -130,113 +57,75 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========================================
-// Intersection Observer for Reveal Animations
-// ========================================
-const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -100px 0px',
-    threshold: 0.15
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Already animated
-            return;
-        }
-
-        const element = entry.target;
-        const className = element.classList;
-
-        if (className.contains('reveal-left')) {
-            element.style.animation = 'none';
-            element.offsetHeight; // Trigger reflow
-            element.style.animation = '';
-        } else if (className.contains('reveal-up')) {
-            element.style.animation = 'none';
-            element.offsetHeight; // Trigger reflow
-            element.style.animation = '';
-        }
-    });
-}, observerOptions);
-
-// Observe elements with reveal classes
-document.querySelectorAll('.reveal-left, .reveal-up').forEach(el => {
-    observer.observe(el);
-});
-
-// ========================================
-// Active Navigation Highlight
-// ========================================
+// Active nav link on scroll
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+const navLinks = document.querySelectorAll('.nav-link');
 
-const onScroll = () => {
+window.addEventListener('scroll', () => {
     let current = '';
-
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-
-        if (window.scrollY >= sectionTop - 150) {
+        
+        if (window.scrollY >= sectionTop - 100) {
             current = section.getAttribute('id');
         }
     });
-
+    
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
     });
+});
+
+// Reveal animation on scroll
+const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 0.1
 };
 
-window.addEventListener('scroll', onScroll);
-
-// ========================================
-// Typing Effect (Optional)
-// ========================================
-// You can uncomment the following to add a typing effect to the hero title
-
-/*
-const heroTitle = document.querySelector('.hero-title span.accent-text');
-
-if (heroTitle) {
-    const name = heroTitle.textContent;
-    let i = 0;
-    let isDeleting = false;
-    let cycleCount = 0;
-
-    const typeEffect = () => {
-        const currentText = name.slice(0, i);
-        
-        if (isDeleting) {
-            heroTitle.textContent = currentText;
-            i--;
-        } else {
-            heroTitle.textContent = currentText;
-            i++;
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
+    });
+}, observerOptions);
 
-        const typeSpeed = isDeleting ? 50 : 100;
-        const pauseTime = isDeleting ? 200 : 0;
+// Apply animation styles to cards
+document.querySelectorAll('.hero-about-card, .experience-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
 
-        if (!isDeleting && i === name.length) {
-            setTimeout(() => { isDeleting = true; }, typeSpeed + pauseTime);
-        } else if (isDeleting && i === 0) {
-            isDeleting = false;
-            cycleCount++;
-            if (cycleCount < 2) {
-                setTimeout(typeEffect, typeSpeed + pauseTime);
-            }
-        } else {
-            setTimeout(typeEffect, typeSpeed);
+// Email copy button interaction
+const emailBtn = document.getElementById('email-copy-btn');
+const copyToast = document.getElementById('copy-toast');
+
+if (emailBtn) {
+    emailBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText('adith.radharamanan@ucr.edu');
+        } catch (err) {
+            const textArea = document.createElement('textarea');
+            textArea.value = 'adith.radharamanan@ucr.edu';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
         }
-    };
-
-    setTimeout(typeEffect, 1000);
+        copyToast.classList.add('show');
+        setTimeout(() => {
+            copyToast.classList.remove('show');
+        }, 2000);
+    });
 }
-*/
 
 console.log('Portfolio loaded successfully');

@@ -1,102 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Adith Radharamanan — Freshman at UC Riverside studying General Chemistry, pre-med track, aspiring pediatrician." />
-    <meta name="author" content="Adith Radharamanan" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adith Radharamanan — Portfolio</title>
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" aria-hidden="true"></div>
-
-    <!-- Particle Background -->
-    <canvas id="bg-particles" aria-hidden="true"></canvas>
-
     <!-- Navigation -->
-    <nav id="top" class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#hero">AR</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav gap-3">
-                    <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#clinical">Clinical</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Adith Radharamanan</a>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 d-flex align-items-center justify-content-center">
-                    <div class="hero-avatar-ring mb-4">
-                        <div class="hero-avatar-inner">
-                            <img src="images/avatar.jpg" alt="Adith Radharamanan" class="avatar-photo" />
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-profile">
+                <div class="hero-avatar">
+                    <img src="images/graduation.jpg" alt="Adith Radharamanan">
+                </div>
+                <div class="hero-info">
+                    <h1 class="hero-name">Adith Radharamanan</h1>
+                    <p class="hero-role">General Chemistry Major · Pre-Med Track</p>
+                    <p class="hero-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Riverside, CA
+                    </p>
+                    <div class="hero-experience">
+                        <span class="experience-years">Freshman</span>
+                        <span class="experience-divider"></span>
+                        <span class="experience-label">UC Riverside — Class of 2030</span>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-email" id="email-copy-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            adith.radharamanan@ucr.edu
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-about">
+                <h3 class="hero-about-title">About</h3>
+                <div class="hero-about-content">
+                    <p class="hero-about-text">
+                        I'm a freshman at UC Riverside studying General Chemistry on a pre-med track, studying to become a pediatrician. I believe the most impactful healthcare happens when you combine clinical skill with genuine empathy — recognizing when someone needs help before they even ask. This philosophy shapes everything I do, from co-founding a tutoring club that served over 200 students to volunteering at community events and serving as a certified lifeguard and BLS provider.
+                    </p>
+                    <div class="hero-about-details">
+                        <div class="hero-about-card">
+                            <h4>Community Philosophy</h4>
+                            <p>
+                                The people who need help most are often the least likely to ask for it. I witnessed this firsthand when I noticed Spanish-speaking families struggling at a community event. I took the initiative to add Spanish translations to every sign in my section — transforming an inaccessible space into one where everyone felt welcome. That experience taught me that effective leadership means noticing who's being left out and removing barriers before they have to ask.
+                            </p>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <p class="eyebrow mb-2 reveal-left">Freshman at UC Riverside</p>
-                    <h1 class="hero-title reveal-left">
-                        <span class="accent-text">Adith</span> Radharamanan
-                    </h1>
-                    <h2 class="hero-subtitle reveal-left">
-                        General Chemistry Major · Pre-Med Track · Aspiring Pediatrician
-                    </h2>
-                    <div class="hero-cta reveal-left">
-                        <a href="#clinical" class="btn btn-outline-light me-3">My Clinical Experience</a>
-                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section-pad">
-        <div class="container">
-            <div class="section-heading reveal-left">
-                <p class="section-kicker mb-3">About Me</p>
-                <h2>A little about who I am and what drives me.</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <div class="col-lg-8">
-                    <div class="glass-card p-4 mb-4 reveal-up reveal-delay-1">
-                        <h4 class="mb-3">Personal Statement</h4>
-                        <p>
-                            I'm a freshman at UC Riverside studying General Chemistry on a pre-med track, studying to become a pediatrician. I believe the most impactful healthcare happens when you combine clinical skill with genuine empathy — recognizing when someone needs help before they even ask. This philosophy shapes everything I do, from co-founding a tutoring club that served over 200 students to volunteering at community events and serving as a certified lifeguard and BLS provider.
-                        </p>
-                    </div>
-                    <div class="glass-card p-4 reveal-up reveal-delay-2">
-                        <h4 class="mb-3">Community Philosophy</h4>
-                        <p>
-                            The people who need help most are often the least likely to ask for it. I witnessed this firsthand when I noticed Spanish-speaking families struggling at a community event. I took the initiative to add Spanish translations to every sign in my section — transforming an inaccessible space into one where everyone felt welcome. That experience taught me that effective leadership means noticing who's being left out and removing barriers before they have to ask.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="glass-card p-4 reveal-up reveal-delay-3">
-                        <h4 class="mb-3">Languages</h4>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <span class="lang-chip">English <span class="lang-level">— Native</span></span>
-                            <span class="lang-chip">Spanish <span class="lang-level">— Fluent</span></span>
-                            <span class="lang-chip">Tamil <span class="lang-level">— Conversational</span></span>
+                        <div class="hero-about-card">
+                            <h4>Languages</h4>
+                            <div class="language-pills">
+                                <span class="language-pill">English</span>
+                                <span class="language-pill">Spanish</span>
+                                <span class="language-pill">Tamil</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,294 +84,237 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="section-pad">
+    <section id="education" class="section">
         <div class="container">
-            <div class="section-heading reveal-left">
-                <p class="section-kicker mb-3">Education</p>
-                <h2>Where I've studied and what I've learned.</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <!-- UC Riverside -->
-                <div class="col-lg-12">
-                    <div class="edu-card reveal-up reveal-delay-1">
-                        <div class="edu-header">
-                            <div class="edu-icon">🎓</div>
-                            <div class="edu-main">
-                                <h3>UC Riverside</h3>
-                                <p class="edu-location">Riverside, CA — Class of 2030</p>
-                            </div>
-                            <span class="edu-badge">Freshman</span>
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <article class="education-card">
+                    <header class="education-header">
+                        <div class="education-info">
+                            <h3>UC Riverside</h3>
+                            <p class="education-location">Riverside, CA — Class of 2030</p>
                         </div>
-                        <span class="edu-tag">General Chemistry Major · Pre-Med Track</span>
-                        <ul class="edu-details">
-                            <li>General Chemistry major on pre-med track</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Leigh High School -->
-                <div class="col-lg-12">
-                    <div class="edu-card reveal-up reveal-delay-2">
-                        <div class="edu-header">
-                            <div class="edu-icon">🏫</div>
-                            <div class="edu-main">
-                                <h3>Leigh High School</h3>
-                                <p class="edu-location">San Jose, CA — Class of 2026</p>
-                            </div>
-                            <div class="edu-badge-group">
-                                <span class="edu-badge">4.21 GPA</span>
-                                <span class="edu-sub">Rank #3</span>
-                            </div>
-                        </div>
-                        <span class="edu-tag">Middle College Program — West Valley College</span>
-                        <ul class="edu-details">
-                            <li>Pre-med track with focus on Biological Sciences</li>
-                            <li>AP Spanish, Calculus, Chemistry with Lab</li>
-                            <li>Co-founder & President, Tutoring Club (200+ members)</li>
-                            <li>Jazz Ensemble (2019 – 2026)</li>
-                            <li>Presented at college preparatory group meetings</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- West Valley College -->
-                <div class="col-lg-12">
-                    <div class="edu-card reveal-up reveal-delay-3">
-                        <div class="edu-header">
-                            <div class="edu-icon">🏛️</div>
-                            <div class="edu-main">
-                                <h3>West Valley College</h3>
-                                <p class="edu-location">Saratoga, CA</p>
-                            </div>
-                            <span class="edu-badge">Dean's List</span>
-                        </div>
-                        <span class="edu-tag">Middle College Student</span>
-                        <ul class="edu-details">
-                            <li>Calculus/Analytic Geometry — A (5 credits)</li>
-                            <li>College Success — A (3 credits)</li>
-                            <li>General Psychology — B (3 credits)</li>
-                            <li>Basic Medical Terminology — B (3 credits)</li>
-                            <li>Ecology of the Sierra Nevada — Fieldwork immersion</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- SV CTE -->
-                <div class="col-lg-12">
-                    <div class="edu-card reveal-up reveal-delay-4">
-                        <div class="edu-header">
-                            <div class="edu-icon">🏥</div>
-                            <div class="edu-main">
-                                <h3>Silicon Valley CTE</h3>
-                                <p class="edu-location">Medical Assistant Training Program</p>
-                            </div>
-                        </div>
-                        <span class="edu-tag">Clinical Certification</span>
-                        <ul class="edu-details">
-                            <li>Took vital signs on real patients</li>
-                            <li>Blood drawing with clinical precision</li>
-                            <li>Patient interaction and clinical rotations</li>
-                            <li>Familiar with medical practice protocols</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <span class="education-badge">Freshman</span>
+                    </header>
+                    <ul class="education-details">
+                        <li>General Chemistry Major · Pre-Med Track</li>
+                    </ul>
+                </article>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="section-pad">
-        <div class="container">
-            <div class="section-heading reveal-left">
-                <p class="section-kicker mb-3">Achievements</p>
-                <h2>Certifications, awards, and milestones.</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <!-- BLS/CPR -->
-                <div class="col-lg-6">
-                    <div class="achievement-card reveal-up reveal-delay-1">
-                        <div class="achievement-icon">🚑</div>
-                        <h4>BLS & CPR Certification</h4>
-                        <p class="achievement-date">Issued Jan 2026</p>
-                        <p class="achievement-desc">Basic Life Support & cardiopulmonary resuscitation certification for healthcare environments.</p>
-                    </div>
-                </div>
-                <!-- Lifeguard -->
-                <div class="col-lg-6">
-                    <div class="achievement-card reveal-up reveal-delay-2">
-                        <div class="achievement-icon">🏊</div>
-                        <h4>Lifeguard Certification</h4>
-                        <p class="achievement-date">Certified 2023</p>
-                        <p class="achievement-desc">Red Cross lifeguard certification with water safety, rescue, and emergency response training.</p>
-                    </div>
-                </div>
-                <!-- Dean's List -->
-                <div class="col-lg-6">
-                    <div class="achievement-card reveal-up reveal-delay-3">
-                        <div class="achievement-icon">📚</div>
-                        <h4>Dean's List</h4>
-                        <p class="achievement-date">Fall 2024</p>
-                        <p class="achievement-desc">Recognized for academic excellence with a GPA above 3.5 during Fall semester.</p>
-                    </div>
-                </div>
-                <!-- Tutoring Club -->
-                <div class="col-lg-6">
-                    <div class="achievement-card reveal-up reveal-delay-4">
-                        <div class="achievement-icon">🎓</div>
-                        <h4>Tutoring Club Co-Founder & President</h4>
-                        <p class="achievement-date">200+ Members</p>
-                        <p class="achievement-desc">Founded and led a peer tutoring initiative supporting over 200 students with academic success.</p>
-                    </div>
-                </div>
-                <!-- Honors -->
-                <div class="col-lg-6">
-                    <div class="achievement-card reveal-up reveal-delay-5">
-                        <div class="achievement-icon">🏆</div>
-                        <h4>Honors Chemistry</h4>
-                        <p class="achievement-date">Grade: B</p>
-                        <p class="achievement-desc">Achieved a B in Honors Chemistry, demonstrating strong analytical and problem-solving skills.</p>
-                    </div>
-                </div>
-                <!-- Jazz Ensemble -->
-                <div class="col-lg-6">
-                    <div class="achievement-card reveal-up reveal-delay-6">
-                        <div class="achievement-icon">🎷</div>
-                        <h4>Jazz Ensemble</h4>
-                        <p class="achievement-date">2019 – Present</p>
-                        <p class="achievement-desc">Active member of the school Jazz Ensemble, performing at various campus events and competitions.</p>
-                    </div>
-                </div>
+                <article class="education-card">
+                    <header class="education-header">
+                        <div class="education-info">
+                            <h3>Leigh High School</h3>
+                            <p class="education-location">San Jose, CA — Class of 2026</p>
+                        </div>
+                        <span class="education-badge">4.21 GPA Rank #3</span>
+                    </header>
+                    <ul class="education-details">
+                        <li>Middle College Program — West Valley College</li>
+                        <li>Pre-med track with focus on Biological Sciences</li>
+                        <li>AP Spanish, Calculus, Chemistry with Lab</li>
+                        <li>Co-founder & President, Tutoring Club (200+ members)</li>
+                        <li>Jazz Ensemble (2019 – 2026)</li>
+                        <li>Presented at college preparatory group meetings</li>
+                    </ul>
+                </article>
+
+                <article class="education-card">
+                    <header class="education-header">
+                        <div class="education-info">
+                            <h3>West Valley College</h3>
+                            <p class="education-location">Saratoga, CA</p>
+                        </div>
+                        <span class="education-badge">Dean's List</span>
+                    </header>
+                    <ul class="education-details">
+                        <li>Middle College Student</li>
+                        <li>Calculus/Analytic Geometry — A (5 credits)</li>
+                        <li>College Success — A (3 credits)</li>
+                        <li>General Psychology — B (3 credits)</li>
+                        <li>Basic Medical Terminology — B (3 credits)</li>
+                        <li>Ecology of the Sierra Nevada — Fieldwork immersion</li>
+                    </ul>
+                </article>
+
+                <article class="education-card">
+                    <header class="education-header">
+                        <div class="education-info">
+                            <h3>Silicon Valley CTE</h3>
+                            <p class="education-location">Medical Assistant Training Program</p>
+                        </div>
+                        <span class="education-badge">Clinical Certification</span>
+                    </header>
+                    <ul class="education-details">
+                        <li>Took vital signs on real patients</li>
+                        <li>Blood drawing with clinical precision</li>
+                        <li>Patient interaction and clinical rotations</li>
+                        <li>Familiar with medical practice protocols</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section-pad">
+    <section id="experience" class="section">
         <div class="container">
-            <div class="section-heading reveal-left">
-                <p class="section-kicker mb-3">Experience</p>
-                <h2>Where I've worked and what I've built.</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <!-- Tutoring Club -->
-                <div class="col-lg-12">
-                    <div class="experience-card reveal-up reveal-delay-1">
-                        <div class="experience-header">
-                            <div class="experience-main">
-                                <h3>Co-Founder & President</h3>
-                                <p class="experience-location">Tutoring Club</p>
-                            </div>
-                            <span class="experience-badge">200+ Members</span>
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <article class="experience-card">
+                    <header class="experience-header">
+                        <div class="experience-info">
+                            <h3>Co-Founder & President</h3>
+                            <p class="experience-org">Tutoring Club</p>
                         </div>
-                        <ul class="experience-details">
-                            <li>Co-founded a peer tutoring initiative to support academic success across all majors</li>
-                            <li>Organized weekly tutoring sessions, study groups, and academic workshops</li>
-                            <li>Collaborated with faculty to align tutoring resources with course curricula</li>
-                            <li>Recruited and trained student tutors, fostering leadership and mentorship skills</li>
-                            <li>Increased student engagement and course pass rates through accessible peer support</li>
-                        </ul>
-                    </div>
-                </div>
+                        <span class="experience-badge">200+ Members</span>
+                    </header>
+                    <ul class="experience-details">
+                        <li>Co-founded a peer tutoring initiative to support academic success across all majors</li>
+                        <li>Organized weekly tutoring sessions, study groups, and academic workshops</li>
+                        <li>Collaborated with faculty to align tutoring resources with course curricula</li>
+                        <li>Recruited and trained student tutors, fostering leadership and mentorship skills</li>
+                        <li>Increased student engagement and course pass rates through accessible peer support</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card">
+                    <header class="experience-header">
+                        <div class="experience-info">
+                            <h3>BLS Training</h3>
+                            <p class="experience-org">Certified 2026</p>
+                        </div>
+                        <span class="experience-badge">Healthcare Focus</span>
+                    </header>
+                    <ul class="experience-details">
+                        <li>Completed comprehensive Basic Life Support training with emphasis on healthcare applications</li>
+                        <li>Gained proficiency in cardiopulmonary resuscitation (CPR) and emergency medical response</li>
+                        <li>Learned to use automated external defibrillators (AED) and oxygen equipment</li>
+                        <li>Developed critical thinking skills for high-pressure emergency scenarios</li>
+                        <li>Understood the chain of survival and team dynamics in healthcare settings</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card">
+                    <header class="experience-header">
+                        <div class="experience-info">
+                            <h3>Patient Interaction</h3>
+                            <p class="experience-org">Community Events</p>
+                        </div>
+                    </header>
+                    <ul class="experience-details">
+                        <li>Engaged with diverse patient populations in community health outreach events</li>
+                        <li>Developed empathy and communication skills while assisting vulnerable populations</li>
+                        <li>Learned to identify and address health concerns with compassion and patience</li>
+                        <li>Practiced culturally competent care in real-world settings</li>
+                        <li>Contributed to improving patient experience and trust in healthcare systems</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card">
+                    <header class="experience-header">
+                        <div class="experience-info">
+                            <h3>Medical Assistant Training</h3>
+                            <p class="experience-org">Silicon Valley CTE</p>
+                        </div>
+                        <span class="experience-badge">Clinical Certification</span>
+                    </header>
+                    <ul class="experience-details">
+                        <li>Took vital signs on real patients in clinical settings</li>
+                        <li>Performed blood drawing with clinical precision</li>
+                        <li>Completed patient interaction and clinical rotations</li>
+                        <li>Familiar with medical practice protocols and procedures</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Clinical Experience Section -->
-    <section id="clinical" class="section-pad">
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
         <div class="container">
-            <div class="section-heading reveal-left">
-                <p class="section-kicker mb-3">Clinical</p>
-                <h2>Hands-on medical experience & patient care.</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <!-- BLS Training -->
-                <div class="col-lg-12">
-                    <div class="clinical-card reveal-up reveal-delay-1">
-                        <div class="clinical-header">
-                            <div class="clinical-main">
-                                <h3>BLS Training</h3>
-                                <p class="clinical-location">Certified 2026</p>
-                            </div>
-                            <span class="clinical-badge">Healthcare Focus</span>
-                        </div>
-                        <ul class="clinical-details">
-                            <li>Completed comprehensive Basic Life Support training with emphasis on healthcare applications</li>
-                            <li>Gained proficiency in cardiopulmonary resuscitation (CPR) and emergency medical response</li>
-                            <li>Learned to use automated external defibrillators (AED) and oxygen equipment</li>
-                            <li>Developed critical thinking skills for high-pressure emergency scenarios</li>
-                            <li>Understood the chain of survival and team dynamics in healthcare settings</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Patient Interaction -->
-                <div class="col-lg-12">
-                    <div class="clinical-card reveal-up reveal-delay-2">
-                        <div class="clinical-header">
-                            <div class="clinical-main">
-                                <h3>Patient Interaction</h3>
-                                <p class="clinical-location">Community Events</p>
-                            </div>
-                        </div>
-                        <ul class="clinical-details">
-                            <li>Engaged with diverse patient populations in community health outreach events</li>
-                            <li>Developed empathy and communication skills while assisting vulnerable populations</li>
-                            <li>Learned to identify and address health concerns with compassion and patience</li>
-                            <li>Practiced culturally competent care in real-world settings</li>
-                            <li>Contributed to improving patient experience and trust in healthcare systems</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-pad">
-        <div class="container">
-            <div class="section-heading reveal-left">
-                <p class="section-kicker mb-3">Contact</p>
-                <h2>Let's connect.</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <div class="col-lg-8 mx-auto text-center reveal-up">
-                    <p class="lead mb-4">
-                        I'm always open to discussing new opportunities, collaborations, and projects. Whether you have a question, want to share ideas, or just say hi — I'll try my best to get back to you!
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <article class="achievement-card">
+                    <div class="achievement-icon">🚑</div>
+                    <h3>BLS & CPR Certification</h3>
+                    <p class="achievement-date">Issued Jan 2026</p>
+                    <p class="achievement-desc">
+                        Basic Life Support & cardiopulmonary resuscitation certification for healthcare environments.
                     </p>
-                    <a href="mailto:adith.radharamanan@ucr.edu" class="btn btn-lg btn-outline-light mb-3">
-                        <span class="d-block mb-2">adith.radharamanan@ucr.edu</span>
-                        <span class="small">Click to send email</span>
-                    </a>
-                    <div class="social-links d-flex justify-content-center gap-4 mt-4">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 1.6-9.4 1.6L6 7v6.4l-3.1 3.1c.8.2 1.7-.3 3-1.5 1.3-1.4 2-3.4 2-3.4l3.6 2.6c-.5.8-1.2 1.2-2 1.4 1.8 1.3 3.9 2.1 6.2 2.1 6.3 0 11.5-5.2 11.5-11.5 0-1.6-.4-3.2-1.2-4.6z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+                </article>
+
+                <article class="achievement-card">
+                    <div class="achievement-icon">🏊</div>
+                    <h3>Lifeguard Certification</h3>
+                    <p class="achievement-date">Certified 2023</p>
+                    <p class="achievement-desc">
+                        Red Cross lifeguard certification with water safety, rescue, and emergency response training.
+                    </p>
+                </article>
+
+                <article class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <h3>Dean's List</h3>
+                    <p class="achievement-date">Fall 2024</p>
+                    <p class="achievement-desc">
+                        Recognized for academic excellence with a GPA above 3.5 during Fall semester.
+                    </p>
+                </article>
+
+                <article class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>Tutoring Club Co-Founder & President</h3>
+                    <p class="achievement-date">200+ Members</p>
+                    <p class="achievement-desc">
+                        Founded and led a peer tutoring initiative supporting over 200 students with academic success.
+                    </p>
+                </article>
+
+                <article class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Honors Chemistry</h3>
+                    <p class="achievement-date">Grade: B</p>
+                    <p class="achievement-desc">
+                        Achieved a B in Honors Chemistry, demonstrating strong analytical and problem-solving skills.
+                    </p>
+                </article>
+
+                <article class="achievement-card">
+                    <div class="achievement-icon">🎷</div>
+                    <h3>Jazz Ensemble</h3>
+                    <p class="achievement-date">2019 – Present</p>
+                    <p class="achievement-desc">
+                        Active member of the school Jazz Ensemble, performing at various campus events and competitions.
+                    </p>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4">
+    <footer class="footer">
         <div class="container">
-            <p class="text-center text-muted mb-0">
-                <a href="https://www.wallofportfolios.in/portfolios/prachi-pandey/">Inspired by Wall of Portfolios</a>
-            </p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/adithradh/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="http://github.com/Adithr123/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="copy-toast" id="copy-toast">✓ Email copied!</div>
     <script src="js/script.js"></script>
 </body>
 </html>
