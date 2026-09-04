@@ -354,6 +354,25 @@ ul {
     opacity: 1;
 }
 
+.btn-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-linkedin:hover {
+    color: #0077b5;
+    opacity: 1;
+}
+
 
 
 /* Hero About */

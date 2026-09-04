@@ -112,10 +112,10 @@ const copyToast = document.getElementById('copy-toast');
 if (emailBtn) {
     emailBtn.addEventListener('click', async () => {
         try {
-            await navigator.clipboard.writeText('adith.radharamanan@ucr.edu');
+            await navigator.clipboard.writeText('adith08@gmail.com');
         } catch (err) {
             const textArea = document.createElement('textarea');
-            textArea.value = 'adith.radharamanan@ucr.edu';
+            textArea.value = 'adith08@gmail.com';
             document.body.appendChild(textArea);
             textArea.select();
             document.execCommand('copy');
