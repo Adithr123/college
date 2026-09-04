@@ -354,6 +354,24 @@ ul {
     opacity: 1;
 }
 
+.btn-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.btn-phone:hover {
+    color: var(--green);
+    opacity: 1;
+}
+
 /* Hero About */
 .hero-about {
     padding-top: 1.5rem;
