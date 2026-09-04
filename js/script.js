@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorRing = document.querySelector('.cursor-ring');
-    const interactives = document.querySelectorAll('a, button, .btn-email, .btn-phone');
+    const interactives = document.querySelectorAll('a, button, .btn-email');
 
     if (cursorDot && cursorRing) {
         let mouseX = 0, mouseY = 0;
@@ -128,26 +128,5 @@ if (emailBtn) {
     });
 }
 
-// Phone copy button interaction
-const phoneBtn = document.getElementById('phone-copy-btn');
-
-if (phoneBtn) {
-    phoneBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText('+16696009091');
-        } catch (err) {
-            const textArea = document.createElement('textarea');
-            textArea.value = '+16696009091';
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-        }
-        copyToast.classList.add('show');
-        setTimeout(() => {
-            copyToast.classList.remove('show');
-        }, 2000);
-    });
-}
 
 console.log('Portfolio loaded successfully');
