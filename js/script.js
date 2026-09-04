@@ -81,29 +81,40 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Reveal animation on scroll
+// Reveal animation on scroll (Intersection Observer with fallback)
 const observerOptions = {
     root: null,
     rootMargin: '0px 0px -50px 0px',
     threshold: 0.1
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+const cards = document.querySelectorAll('.hero-about-card, .experience-card');
 
-// Apply animation styles to cards
-document.querySelectorAll('.hero-about-card, .experience-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
+// Check if IntersectionObserver is supported
+if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+} else {
+    // Fallback: show all cards immediately
+    cards.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        el.style.transition = 'none';
+    });
+}
 
 // Email copy button interaction
 const emailBtn = document.getElementById('email-copy-btn');
