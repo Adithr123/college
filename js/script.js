@@ -40,6 +40,184 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Scroll Progress Animation
+function updateScrollProgress() {
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (!scrollProgress) return;
+    
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollProgressPercent = (window.scrollY / totalHeight) * 100;
+    
+    scrollProgress.style.width = `${scrollProgressPercent}%`;
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+updateScrollProgress(); // Initialize
+
+// Molecular Animation Canvas
+function initMolecularAnimation() {
+    const canvas = document.getElementById('molecules');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let animationId;
+    let particles = [];
+    
+    // Set canvas dimensions
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    // Particle class for molecular animation
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.color = `hsla(${Math.random() * 60 + 180}, 70%, 50%, ${Math.random() * 0.5})`;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            
+            // Draw connection lines between nearby particles
+            particles.forEach(particle => {
+                const distance = Math.hypot(this.x - particle.x, this.y - particle.y);
+                if (distance < 150) {
+                    ctx.strokeStyle = `${this.color} ${0.2 - distance / 750}`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(particle.x, particle.y);
+                    ctx.stroke();
+                }
+            });
+        }
+        
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    
+    function animateMolecules() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Update and draw all particles
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        
+        // Add new particles occasionally
+        if (Math.random() < 0.02) {
+            particles.push(new Particle());
+        }
+        
+        // Limit particle count for performance
+        if (particles.length > 50) {
+            particles.splice(0, particles.length - 50);
+        }
+        
+        animationId = requestAnimationFrame(animateMolecules);
+    }
+    
+    // Initialize
+    resizeCanvas();
+    animateMolecules();
+    
+    // Handle resize events
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+    });
+}
+
+// Initialize molecular animation
+initMolecularAnimation();
+
+// Mobile Navigation Toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileToggle = document.querySelector('.nav-mobile-toggle');
+    const mobileMenu = document.getElementById('nav-mobile-menu');
+    
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.nav-mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+    }
+});
+
+// Avatar Ring Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const avatar = document.querySelector('.hero-avatar');
+    const avatarRing = document.querySelector('.avatar-ring');
+    
+    if (avatar && avatarRing) {
+        avatar.addEventListener('mouseenter', () => {
+            avatarRing.style.animation = 'pulse 2s infinite';
+        });
+        
+        avatar.addEventListener('mouseleave', () => {
+            avatarRing.style.animation = 'none';
+        });
+    }
+});
+
+// Enhanced Section Animations
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+    };
+    
+    const allRevealElements = document.querySelectorAll(
+        '.hero-about-card, .experience-card, .education-card, .achievement-card, .section-header'
+    );
+    
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Add stagger effect for cards
+                    if (entry.target.classList.contains('education-card') || 
+                        entry.target.classList.contains('achievement-card')) {
+                        entry.target.style.transitionDelay = '0.1s';
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        allRevealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+    }
+});
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -139,5 +317,25 @@ if (emailBtn) {
     });
 }
 
-
 console.log('Portfolio loaded successfully');
+
+// Footer email copy functionality
+const emailBtnFooter = document.getElementById('email-copy-btn-footer');
+if (emailBtnFooter && copyToast) {
+    emailBtnFooter.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText('adith08@gmail.com');
+        } catch (err) {
+            const textArea = document.createElement('textarea');
+            textArea.value = 'adith08@gmail.com';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+        copyToast.classList.add('show');
+        setTimeout(() => {
+            copyToast.classList.remove('show');
+        }, 2000);
+    });
+}
